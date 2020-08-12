@@ -1,0 +1,26 @@
+\subsection{Das Lebesgue-Integral}
+
+Das Ziel ist eine größere Klasse integrierbarer Funktionen, als beim Riemannintegral. Dazu sei vorab erwähnt, dass es bei jedem plausiblen Integralsbegriff nichtintegrierbare Funktionen $f\colon [a,b] \to \mathbb{R}$ gibt.\\
+\underline{Behauptung:} Es gibt keine Funktion (Maß) $\mu\colon P([0,1]) \to [0,1]$ derart, dass
+\begin{itemize}
+	\item $\mu([0,1]) = 1, \, \mu(\emptyset) = 0$
+	\item Ist $A = A_1 \dot{\cup A_2} \dot{\cup} ... \,(A_i \subset [0,1])$, dann $\mu(A) = \sum_{i=1}^{\infty} \mu(A_i)$
+	\item Für $A \subset [0,1], \alpha \in [0,1], A_{\alpha} \coloneqq \{y + \alpha | y \in A\} \subset [0,1]$ dann $\mu(A_{\alpha}) = \mu(A)$
+\end{itemize}
+\underline{Beweis:} Für $x,y\in [0,1]$ definiere $x \sim y \Leftrightarrow x-y \in \mathbb{Q}$\\
+Das heißt $[0,1]$ zerfällt in Äquivalenzklassen und es gibt ein Repräsentantensystem $R \subset [0,1]$. $R$ enthält aus jeder Äquivalenzklasse genau ein Element.\\
+Für $q\in \mathbb{Q} \cap [0,1[$ definiere $R_q = \{y + q | y \in R, y \in [0,1-q]\} \dot{\cup} \{ y+q-1|y \in ]1-q,1] \}$.\\
+Dann gilt: $[0,1] = \dot{\bigcup_{q\in[0,1[}} R_q$\\
+Denn die $R_q$ sind paarweise disjunkt, sonst gäbe es zwei Elemente $x\neq y$ von R mit $x-y \in \mathbb{Q}$ und für jedes $x \in [0,1]$ existiert ein $y \in R$ mit $x-y \in \mathbb{Q} \Rightarrow x = y + q \lor x = y + q - 1$ für $q\in [0,1[$ geeignet gewählt.\\
+Aber: $1 = \mu([0,1]) = \sum_{q \in [0,1[} \mu(R_q) = \sum_{q \in [0,1[} \mu(R) =
+\left \{
+\begin{matrix}
+0\\
+\infty
+\end{matrix}
+\right . \lightning$\\
+\underline{Folgerung:} Ein vernünftiger Integralbegriff für alle Funktionen $f\colon [0,1] \to \mathbb{R}$ sollte insbesondere für Indikatorfunktionen von Mengen $A \subset [0,1]$ einen Wert $\mu(A)\coloneqq \int_{a}^{b} I_A(x) \text{d}x$ liefern, mit $I_A(x) \coloneqq \left \{ \begin{matrix}
+1, & x \in A\\
+0, & x \ne A
+\end{matrix}
+\right .$ derart, dass obige Eigenschaften erfüllt sind. Also kann kein solches „universelles“ Integral existieren.

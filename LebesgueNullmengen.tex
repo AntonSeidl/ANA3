@@ -1,0 +1,76 @@
+\subsection{Lebesgue-Nullmengen}
+Ein n-dimensionaler Quader $Q \subset \mathbb{R}^n$ ist ein karthesisches Produkt $Q = ]a_1,b_1[ \times ]a_2,b_2[ \times ... \times ]a_n,b_n[$ offener Intervalle mit $a_i,b_i \in \mathbb{R}$ und $a_i \leq b_i (i=1,...,n)$. Insbesondere ist damit $Q = \emptyset$ ein Quader.
+\[ \mu(Q)\coloneqq (b_1 - a_1)(b_2 - a_2)...(b_n - a_n)\, \text{nennen wir das Maß von $Q$}\]
+
+Ist $M = Q_1 \dot\cup Q_2 \dot{\cup} ... \dot{\cup Q_k}$ die disjunkte Vereinigung n-dimensionaler Quader $Q_i$ $(i=1,2,...k)$, dann definieren wir $\mu(M)\coloneqq \sum_{i=1}^{k} \mu(Q_i)$
+
+\underline{Bermerkung:}
+Wir haben Quader als offene Menge definiert. Falls wir Randpunkte zulassen, werden wir das als Ausnahme kennzeichnen.
+\underline{Sonderfälle:}
+\begin{equation*}
+	\begin{matrix}
+		n=1 &\text{ Quader sind offene Intervalle des } \mathbb{R}, & \mu(Q) \text{ entspricht der Intervalllänge}\\
+		n=2 & \text{Quader sind offene Rechtecke, } & \mu(Q) \text{ entspricht dem Flächeninhalt von Q}\\
+		n=3 &\text{ Quader, } & \mu(Q) \text{ entspricht dem Volumen von Q}\\
+	\end{matrix}
+\end{equation*}
+\subsubsection{Definition Nullmenge}
+Eine Menge $N \subset \mathbb{R}^n$ nennt man n-dimensionale (Lebesgue-)Nullmenge, falls gilt:
+\[\forall_{\epsilon > 0} \exists_{Q_i \in \mathbb{R}^n} N \subset \bigcup_{i =1}^{\infty} \text{ und } \sum_{i=1}^{\infty} \mu(Q_i) < \epsilon\]
+
+\underline{Bemerkungen:}
+\begin{itemize}
+	\item Da $Q_i = \emptyset$ erlaubt ist, sind auch Überdeckungen durch endlich viele Quader erlaubt.
+	\item In der Definition könnte man Quader mit Randpunkten zulassen, das wird zur gleichen Klasse von Nullmengen führen.
+	\item Warnung: Die Definition hängt von $n$ ab, zum Beispiel ist $N\coloneqq [0,1] \subset \mathbb{R}^1$ keine 1- dimensionale Nullmenge.\\
+	Aber: $\tilde{N}\coloneqq[0,1]\times\{0\}\subset\mathbb{R}^2$ ist eine 2-dimensionale Nullmenge, da für $\epsilon > 0 \, \tilde{N}\subset Q_{\epsilon}\coloneqq\, ]-1,2[ \times ]\frac{-\epsilon}{12}, \frac{\epsilon}{12}[ \text{ mit } \mu(Q_{\epsilon}) = \frac{\epsilon}{2} < \epsilon$ gilt.
+\end{itemize}
+\underline{Beispiele}
+\begin{itemize}
+	\item Jede abzählbare Menge $M = \{x_1, x_2, x_3, ...\} \subset \mathbb{R}^n$ ist eine n-dimensionale Nullmenge.\\
+	Denn: Sei $\epsilon > 0$, dann definiere $Q_i \coloneqq\, ]x_i - \frac{\epsilon}{2^{i+2}}, x_i + \frac{\epsilon}{2^{i+2}}[$ alsdann gilt $\mu(Q_i) = \frac{\epsilon}{2^{i+2}} und M \subset \bigcup_{i=1}^{\infty} Q_i$ und $\sum_{i=1}^{\infty} \mu(Q_i) = \sum_{i=1}^{\infty} \frac{\epsilon}{2^{i+1}} = \frac{\epsilon}{2} < \epsilon$
+	\item \underline{Cantorsches Diskontinuum}\\
+	Jede Zahl $x \in [0,1]$ lässt sich 3-adisch darstellen als $0,x_1 x_2 x_3 ...$ mit $x_i \in \{0,1,2\}$\\
+	\underline{Bemerkung}
+	Die Darstellung ist analog zum Dezimalsystem nicht immer eindeutig. Beispielsweise $0,101000... = 0,1002222...$
+	\[C\coloneqq \{x \in [0,1] | \exists 3-adische Darstellung x = 0,x_1x_2... \text{ mit } x_i \neq 1 \forall_{i \in \mathbb{N}}\}\] heißt Cantorsches Diskontinuum und ist eine Nullmenge mit übersabzählbar vielen Elementen.\\
+	Anschauliche Konstruktion:
+\begin{equation*}
+	\begin{matrix}
+		C_0 = & [0,1]\\
+		C_1 = & C_0 \setminus \text{ „offenes Mitteldrittel“ } = [0,\frac{1}{3}] \cup [\frac{2}{3}, 1]\\
+		C_2 = & [0,\frac{1}{9}] \cup [\frac{2}{9}, \frac{1}{3}] \cup [\frac{8}{9}, 1]\\
+		\vdots & \vdots\\
+		C_{n+1} = & C_n \setminus \text{„offenes Mitteldrittel“}
+	\end{matrix}
+\end{equation*}
+Damit folgt:
+\begin{itemize}
+	\item $C = \bigcap_{i=0}^{\infty} C_i$
+	\item $C$ ist abgeschlossen, da alle $C_i$ abgeschlossen sind
+	\item $C \subset [0,1] \Rightarrow C $ ist beschränkt und somit insbesondere kompakt.
+	\item $C$ ist eine Nullmenge, da $C \subset C_i$ für alle i und $C_i$ ist Vereinigung von Intervallen mit Gesamtlänge $\mu(C_i) = (\frac{2}{3})^{i-1} < \epsilon$ für i groß genug gewählt.
+	\item $C$ ist überabzählbar, denn $f\colon C\to \{0,2\}, x\mapsto (x_1 x_2 x_3 ...)$ ist bijektiv und $\{0,2\}^{\mathbb{N}}$ ist überabzählbar, da $\{0,1\}^{\mathbb{N}}$ überabzählbar ist.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Proposition}
+\begin{itemize}
+	\item Jede Teilmenge $N' \subset N$ einer n-dim. Nullmenge $N \subset \mathbb{R}^n$ ist eine n-dim Nullmenge.\item Sind $N_1, N_2, N_3, ... \subset \mathbb{R}^n$ n- dim. Nullmengen, dann ist auch $N = \bigcup_{k=1}^\infty N_k$ n-dim. Nullmengen.
+\end{itemize}
+\underline{Beweis}
+\begin{itemize}
+	\item klar nach Definition
+	\item Sei $\epsilon > 0$. Nach Voraussetzung existieren Quader $Q_{k,i} \, (k,i) \in \mathbb{N}$ mit:
+	
+	\begin{equation*}
+		\begin{matrix}
+		N_1 \subset & \bigcup_{i =1}^{\infty} Q_{1,i}, & \sum_{i=1}^{\infty} \mu(Q_{1,i}) < \frac{\epsilon}{2}\\
+		N_2 \subset & \bigcup_{i =1}^{\infty} Q_{2,i}, & \sum_{i=1}^{\infty} \mu(Q_{2,i}) < \frac{\epsilon}{4}\\
+		N_3 \subset & \bigcup_{i =1}^{\infty} Q_{3,i}, & \sum_{i=1}^{\infty} \mu(Q_{3,i}) < \frac{\epsilon}{8}\\
+		& \vdots
+		\end{matrix}\\
+	\end{equation*}	
+	Also: $N = \bigcup_{k=1}^{\infty} N_k \subset \bigcup_{k,i \in \mathbb{N}} Q_{k,i}, \sum_{k=1}^{\infty}\sum_{i=1}^{\infty} \mu(Q_{k,i}) < \sum_{k=1}^{\infty} \frac{\epsilon}{2^k} = \epsilon$
+	\proofend
+\end{itemize}

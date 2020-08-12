@@ -1,0 +1,35 @@
+\subsubsection{Wiederholung Riemann-Integral}
+Eine Funktion $f \colon [a,b] \to \mathbb{R}$ heißt Riemann-integrierbar, falls es eine Folge von Treppenfunktionen $\varphi_n, \psi_n\colon [a,b] \to \mathbb{R} \, ( n = 1,2,3,...) \text{ mit }$\\ \[
+\varphi_n \leq f \leq \psi_n \text{ und } \lim_{n \to \infty} \int_{a}^{b} \varphi_n(x) \,\text{d}x = \lim_{n \to \infty} \int_{a}^{b} \psi_n(x) \, \text{d}x = J\]
+gibt.\\
+Man definiert dann $\int_{a}^{b} f(x) \text{d}x = J$. Eine Treppenfunktion beschreibt dabei eine Abbildung folgender Art:
+\[\varphi\colon [a,b] \to \mathbb{R} \text{, mit } \exists a = x_0<x_1<x_2<...<x_n=b \] derart, dass für alle $k=1,2,...,n \, \varphi$ konstant auf $]x_{k-1}, x_k[$ ist.\\
+$\int_{a}^{b}\varphi(x) \text{d}x = \sum_{k=1}^{n} \varphi(\xi_k)(x_k - x_{k-1})$ mit $\xi_k \in ]x_{k-1}, x_1[$ beliebig.\\
+Diesen Integralsbegriff werden wir zu den Lebesgue-Integralen erweitern.\\
+\underline{Bemerkung:} Es gilt $f\colon [a,b] \to \mathbb{R}$ ist Riemann-integrierbar genau dann, wenn die Menge $U \subset [a,b]$ der Unstetigkeitsmengen von $f$ eine Nullmenge und f beschränkt ist.\\
+Dazu zwei Beispiele:\\
+\\
+Dirichletsche Sprungfunktion:\\
+\begin{matrix}
+		$f\colon [a,b]$ & $\to$ & $\mathbb{R}$\\
+		$x$ & $\mapsto$ & $\left \{
+		\begin{matrix}
+			1 & x \text{ rational}\\
+			0 & \text{sonst}
+		\end{matrix}
+		\right .$
+\end{matrix}\\
+$U = [0,1]$ ist keine Nullmenge, also $f$ nicht Riemann-integrierbar.\\
+
+Die Thomae-Funktion:\\
+\begin{matrix}
+	$f\colon [0,1]$ & $\to$ & $\mathbb{R}$\\
+	$x$ & $\mapsto$ & $\left \{
+	\begin{matrix}
+		\frac{1}{q} & x = \frac{p}{q} \, p,q \in \mathbb{N}, ggT(p,q)=1\\
+		0 & x \in \mathbb{Q}
+	\end{matrix}
+	\right .$
+\end{matrix}\\
+Hier gilt: $U = [0,1] \cap \mathbb{Q}$
+

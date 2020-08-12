@@ -1,0 +1,125 @@
+\subsection{Wiederholung: Abzählbare und endliche Mengen}
+\underline{Definition:}
+\begin{itemize}[noitemsep]
+	\item Zwei Mengen $A$ und $B$ heißen \underline{gleichmächtig}, falls eine bijektive Abbildung \mbox{$f: A\rightarrow B$} existiert.\\
+	\item Eine Menge $A$ heißt \underline{abzählbar unendlich}, falls $A$ gleichmächtig zu $\mathbb{N}$ ist.\\
+	\item $A$ heißt \underline{abzählbar}, falls $A$ endlich oder abzählbar unendlich ist.\\
+	\item $A$ heißt \underline{überabzählbar}, falls $A$ nicht abzählbar ist.
+\end{itemize}
+\underline{Beispiele:}
+\begin{itemize}[noitemsep]
+	\item $\mathbb{N}$ ist abzählbar (unendlich)
+	\item $\mathbb{Z}$ ist abzählbar (unendlich)
+	\item $\mathbb{Q}$ ist abzählbar (unenedlich)
+	\item Sind $A = \{a_1, a_2, ...\}$ und $B = \{b_1, b_2, ...\}$ abzählbar uneendlich, so auch \mbox{$A \cup B = \{a_1, b_1, a_2, b_2, ...\}$}
+	\item Falls $A \subset B$ und $A$ überabzählbar, so ist auch $B$ überabzählbar.
+	\item $a\le b \Rightarrow [a,b[$ überabzählbar\\
+Beweisidee: Cantors Diagonalargument O. E. sei $a = 0, b = 1$, da für $a \leq b$ eine Bijektion $g:[a,b[ \rightarrow [0,1[$ existiert.\\
+Angenommen: $[0,1[ = \{a_1, a_2, a_3, ...\}$, O. E. $\alpha_1 = 0, a_1^{(i)} = 0$\\
+
+Seien
+
+\begin{centering}
+	\begin{tabulary}{\textwidth}{l l}
+		$a_1=0,$ & $\alpha_1^{(1)}, \alpha_2^{(1)}, \alpha_3^{(1)}, ...$\\
+		$a_2=0,$ & $\alpha_1^{(2)}, \alpha_2^{(2)}, \alpha_3^{(2)}, ...$\\
+		$a_3=0,$ & $\alpha_1^{(3)}, \alpha_2^{(3)}, \alpha_3^{(3)}, ...$\\
+		$\vdots$ &
+	\end{tabulary}\\
+\end{centering}
+die nicht abbrechende Dezimaldarstellung der $a_j$, für $i\geq 2$, d. h. $\alpha_i^{(j)} \in \{0,1,...,9\}$ und für $j \geq 2$ sind unendlich viele der $\alpha_1^{(j)}, \alpha_2^{(j)},... \neq 0$
+
+\begin{equation*}
+	Sei \, \beta_i = \left\{
+		\begin{aligned}
+		1, \, & falls \, a_i^{(j)} \neq 1\\
+		2, \, & falls \, a_i^{(j)} = 1
+		\end{aligned}
+		\right.
+\end{equation*}
+Betrachte die Zahl $\beta \in [0,1[$ mit Dezimaldarstellung $\beta := 0,\beta_1, \beta_2, \beta_3, ...$. Es müsste denmanch ein $i \in \mathbb{N}$ mit $\beta = a_j$ geben. Das hieße, dass für alle $i\in \mathbb{N} \, \beta_i = \alpha_i^{(j)}$ gilt, insbesondere $\beta_i = \alpha_i^{(j)}$ was ein Widerspruch zur Definition unserer $\beta_i$ ist. \proofend
+
+\item $\mathcal{P(\mathbb{N})}$ ist gleichmächtig zu $\{(\epsilon_1, \epsilon_2, \epsilon_3, ...)| \, \epsilon_i \in \{0,1\}\} =: \{0,1\}^\mathbb{N} =: \mathcal{E}$
+Es ist demnach $\mathcal{E}$ die Menge aller unendlichen 0-1-Folgen und $\mathcal{P(\mathbb{N})}$ die Potenzmenge von $\mathbb{N}$, wobei für beliebige Mengen $A$ definiert ist:
+\begin{center}
+	$\mathcal{P(M)}\colon \{M|\, M \subset A\}$, z. B. $\mathcal{P}( \{ 1, 2 \} ) = \{\varnothing, \{1\}, \{2\}, \{1,2\}\}$
+\end{center}
+Beweis: Wir müssen nur die Existenz einer Bijektion von $\mathcal{E}$ auf $\mathcal{P(\mathbb{N})}$ zeigen. Dazu definiere
+\begin{equation*}
+\begin{aligned}
+	f: \mathcal{E} \to \mathcal{P(\mathbb{N})}\\
+	(\epsilon_1, \epsilon_2, \epsilon_3, ...) \mapsto M
+\end{aligned}
+\end{equation*}
+mit $\forall n \in \mathbb{N}: \, (n\in M \Leftrightarrow \mathcal{E}_n = 1)$. Eine solche Abbildung ist offensichtlich bijektiv, wie das Beispiel $f(1,0,1,0,1,0,...) = \{1,3,5,7,...\}$ zeigt. \proofend
+\item Sei $W_2\coloneqq \{0,1\}$ die Menge aller endlichen Bitstrings, d.h. aller endlichen 0-1-Folgen. Dann ist $W_2$ abzählbar unendlich.\\
+Beweis: Es ist $W_2 = \sqcup_{k=0}^\infty w_2^{(k)}$, wobei $w_2^{(k)}$ die Menge der 0-1-Folgen der Länge k ist. Dann ist $w_2^{(k)}$ endlich mit $|w_2^{(k)}|= 2^k$ und somit:\\
+$w_2^{(k)} =\{a_1^{(k)}, a_2^{(k)}, ..., a_{2^k}^{(k)}\}$\\
+$W_2 = \{a_1^{(0)}, a_1^{(1)}, a_2^{(1)}, a_1^{(2)}, a_2^{(2)}, a_3^{(2)}, a_4^{(2)}, a_1^{(3)}, a_2^{(3)},...,a_8^{(3)},...\}$
+\item $\mathbb{R}$ und $\mathcal{E}$ sind gleichmächtig. (Übungsaufgabe 1.1.c))
+\begin{enumerate}
+	\item Wir zeigen zunächst, dass $]0,1]$ gleichmächtig zu $\mathcal{E}\setminus\widetilde{W_2}$ mit $\widetilde{W_2}$ ist die Menge aller 0-1-Folgen mit endlich vielen 1en.\\
+	Jedes Element von $]0,1]$ besitzt genau eine nicht abbrechende Dualdarstellung $0,b_1, b_2,b_3,...$, mit $b_i \in \{0,1\}$, d. h. mit unendlich vielen 1en.
+	\item Wir zeigen, dass $\mathcal{E}$ gleichmächtig zu $\mathcal{E}\setminus\widetilde{W_2}$ ist. Es ist $\widetilde{W_2}$ abzählbar, da sie gleichmächtig zu $W_2$ ist, $\mathcal{E}$ ist nicht abzählbar.\\
+	D. h. $\exists \, \widetilde{V_2} \subseteq \mathcal{E}\setminus\widetilde{W_2}$. Seien $\widetilde{W_2} = \{w_1, w_2, w_3, ...\}, \widetilde{V_2} = \{v_1, v_2, v_3,...\}$, dann ist die Abbildung
+	\begin{equation*}
+		\begin{aligned}
+			f\colon \mathcal{E} & \to \mathcal{E}\setminus\widetilde{W_2}\\
+			x & \mapsto
+		\left\{
+		\begin{matrix}
+			x, & x \ne \mathcal{E}\setminus\widetilde{W_2}\\
+			v_{2i}, & x = v_i\\
+			v_{(2i-1)} & x = w_i
+		\end{matrix}
+		\right .
+		\end{aligned}
+	\end{equation*}
+	\raggedleft
+	bijektiv.
+	\raggedright
+	\item $]0,1]$ und $]0,1[$ sind gleichmächtig, denn sei $U\coloneqq \{1,\frac{1}{2}, \frac{1}{4}, ...\} \subset ]0,1]$, dann ist die Abbildung
+	\begin{equation*}
+		\begin{aligned}
+		f\colon ]0,1] &\to ]0,1[\\
+		x & \mapsto
+		\left\{
+		\begin{matrix}
+			x, & falls \, x \ne U\\
+			\frac{x}{2}, & falls \, x \in U
+		\end{matrix}
+		\right .
+		\end{aligned}
+	\end{equation*}
+		\raggedleft
+		bijektiv.
+		\raggedright		
+	\item $\mathbb{R}$ und $]0,1[$ sind gleichmächtig. Betrachte dazu:
+	\begin{equation*}
+		\begin{aligned}
+		f\colon \mathbb{R} &\to \, ]0,1[\\
+		x &\mapsto \frac{1}{\pi} (\arctan(x) + \frac{\pi}{2})
+		\end{aligned}
+	\end{equation*}
+	\raggedleft
+	eine bijektive Abbildung.
+	\raggedright
+\end{enumerate}
+\item Es existiert eine injektive Abb $f\colon \, ]0,1]\times]0,1] \to ]0,1]$ (man kann sogar zeigen, dass die Mengen gleichmächtig sind) (Übungsaufgabe 1.1.d))\\
+Sei $(x,y) \in \, ]0,1] \times ]0,1]$ mit $x = 0,x_1x_2x_3..., y= 0,y_1y_2y_3...$ die eindeutig bestimmten, nicht abbrechenden, Dezimaldarstellungen von x bzw. y. $z\coloneqq 0,x_1y_1x_2y_2...$ sie eine abbrechende Dezimaldarstellung eines Elements $z \in \, ]0,1]$. Die so definierte Abbildung $f\coloneqq \, ]0,1]\times]0,1] \to \, ]0,1], \, (x,y) \mapsto z$ ist offenbar injektiv. Dieses f ist aber nicht surjektiv, da $z = 0,101010... \Rightarrow x=\overline{11}, y = 0$ einen Widerspuch liefert.\\
+Man beachte den Satz von Cantor-Bernstein-Schrödinger: Sind $A,B$ Mengen und $f\colon A \to B, \, g\colon B\to A$ injektiv, dann existiert eine bijektive Abbildung $h\colon A \to B$.
+\item Für jede Menge A gilt: $\mathcal{P(A)}$ und $A$ sind nicht gleichmächtig. (Es gilt $|\mathcal{P(A)}| > |A|$)
+\item Seien $A_1, A_2, A_3, ...$ abzählbare Mengen, dann ist auch deren Vereinigung $\sqcup_{i=1}^\infty A_i$ abzählbar.\\
+Denn: Seien O. E. alle $A_i$ unendlich und paarweise disjunkt\\
+
+\parbox{0.4\textwidth}{
+	\begin{tabulary}{\textwidth}{c c c}
+		$A_1$ & = & $\{a_{11}, a_{12}, a_{13}, ...\}$\\
+		$A_2$ & = & $\{a_{21}, a_{22}, a_{23}, ...\}$\\
+		$A_3$ & = & $\{a_{31}, a_{32}, a_{33}, ...\}$\\
+		$A_4$ & = & $\{a_{41}, a_{42}, a_{43}, ...\}$\\
+		$\vdots$ & & $\vdots$
+	\end{tabulary}}
+\parbox{0.6\textwidth}{
+	Nummeriert man diese mit dem Diagonalverfahren, so folgt die Abzählbarkeit.\vspace{45pt}}
+\end{itemize}
