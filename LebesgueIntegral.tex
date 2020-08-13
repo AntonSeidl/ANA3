@@ -28,10 +28,10 @@ Aber: $1 = \mu([0,1]) = \sum_{q \in [0,1[} \mu(R_q) = \sum_{q \in [0,1[} \mu(R) 
 \subsubsection{Definition}
 \begin{itemize}
 	\item[a)] Sei $D \subseteq \mathbb{R}^n$, dann heißt $\varphi :D \to \mathbb{R}^n$ Treppenfunktion auf D, falls
-		\[ \exists \text{Quader} Q_1, Q_2, ..., Q_l \subseteq \mathbb{R}^n \text{paarweise disjunkt mit} \overline{D} \supseteq \bigcup\limit_{i=1}^l \overline{Q_i}
-		\text{derart, dass} \varphi \text{für jedes} i = 1,2,...,l \text{konstant auf dem Quader} Q_i \text{ist und} f(x) = 0 \forall x \in D\setminus \bigcup\limit_{i=1}^l\]
-	\item[b)] Das Integral der Treppenfuktion \varphi\colon D \to \mathbb{R} aus a) ist definiert durch
-		\[ \int_D \varphi(x) \text{d}x = \sum\limit_{i=1}^l \varphi(\xi_i) \mu(Q_i)\]
+		\[ \exists \text{Quader} Q_1, Q_2, ..., Q_l \subseteq \mathbb{R}^n \text{paarweise disjunkt mit} \overline{D} \supseteq \bigcup\lim_{i=1}^l \overline{Q_i}
+		\text{derart, dass} \varphi \text{für jedes} i = 1,2,...,l \text{konstant auf dem Quader} Q_i \text{ist und} f(x) = 0 \forall x \in D\setminus \bigcup\lim_{i=1}^l\]
+	\item[b)] Das Integral der Treppenfuktion $\varphi\colon D \to \mathbb{R}$ aus a) ist definiert durch
+		\[ \int_D \varphi(x) \text{d}x = \sum\lim_{i=1}^l \varphi(\xi_i) \mu(Q_i)\]
 		wobei $\xi_i \in Q_i (i=1,...,l)$ beliebige Stützstellen sind. 
 \end{itemize}
 
@@ -58,5 +58,5 @@ Das ist im Folgenden definierte \underline{Lebesgue-Integral} ist im Vergleich z
 eine (n-dim) Nullmenge ist.
 
 \underline{Schlüsselidee:} punktweise Konvergenz $\varphi_n \longrightarrow^{n \to \infty} f$ f. ü.\\
-	(d.h. \exists N \subseteq D \text{Nullmenge:} \forall x \in D \setminus N \colon \lim_{n \to \infty} \varphi_n(x)=f(x)) und damit
+	(d.h. $\exists N \subseteq D \text{Nullmenge:} \forall x \in D \setminus N \colon \lim_{n \to \infty} \varphi_n(x)=f(x)$) und damit
 	\[\int_D f(x) \text{d}x = \lim_{n \to \infty} \int_D \varphi_n(x) \text{d}x\]
