@@ -28,10 +28,10 @@ Aber: $1 = \mu([0,1]) = \sum_{q \in [0,1[} \mu(R_q) = \sum_{q \in [0,1[} \mu(R) 
 \subsubsection{Definition}
 \begin{itemize}
 	\item[a)] Sei $D \subseteq \mathbb{R}^n$, dann heißt $\varphi :D \to \mathbb{R}^n$ Treppenfunktion auf D, falls
-		\[ \exists \text{Quader} Q_1, Q_2, ..., Q_l \subseteq \mathbb{R}^n \text{paarweise disjunkt mit} \overline{D} \supseteq \bigcup\lim_{i=1}^l \overline{Q_i}
-		\text{derart, dass} \varphi \text{für jedes} i = 1,2,...,l \text{konstant auf dem Quader} Q_i \text{ist und} f(x) = 0 \forall x \in D\setminus \bigcup\lim_{i=1}^l\]
+		\[ \exists \text{Quader } Q_1, Q_2, ..., Q_l \subseteq \mathbb{R}^n \text{ paarweise disjunkt mit } \overline{D} \supseteq \bigcup_{i=1}^l \overline{Q_i}\]
+		derart, dass $\varphi$ für jedes $i = 1,2,...,l$ konstant auf dem Quader $Q_i$ ist und \[f(x) = 0 \forall x \in D\setminus \bigcup\lim_{i=1}^l\]
 	\item[b)] Das Integral der Treppenfuktion $\varphi\colon D \to \mathbb{R}$ aus a) ist definiert durch
-		\[ \int_D \varphi(x) \text{d}x = \sum\lim_{i=1}^l \varphi(\xi_i) \mu(Q_i)\]
+		\[ \int_D \varphi(x) \text{d}x = \sum_{i=1}^l \varphi(\xi_i) \mu(Q_i)\]
 		wobei $\xi_i \in Q_i (i=1,...,l)$ beliebige Stützstellen sind. 
 \end{itemize}
 
@@ -40,23 +40,79 @@ Aber: $1 = \mu([0,1]) = \sum_{q \in [0,1[} \mu(R_q) = \sum_{q \in [0,1[} \mu(R) 
 	\item[1)] Für $n=1$ ist das äquivalent zur Definition aus AN 1/2
 	\item[2)] Integraldefinition ist wohldefiniert, insbesondere unabhängig von der gewählten Unterteilung im Quader $Q_i$
 	\item[3)] Menge der Treppenfuktionen auf D ist abgeschlossen unter Linearkombination
-	\[(\varphi, \psi \text{Treppenfuktionen auf D} \alpha, \beta \in \mathbb{R} \Rightarrow \alpha\varphi + \beta\psi \text{Treppenfuktionen auf D})\]
+	\[(\varphi, \psi \text{ Treppenfunktionen auf D } \alpha, \beta \in \mathbb{R} \Rightarrow \alpha\varphi + \beta\psi \text{ Treppenfuktionen auf D})\]
 	und unter Max/Min.
-	\[(x \mapsto Max (\varphi(x), \psi(x)) \text{ist Treppenfunktion auf D})\]
+	\[(x \mapsto \text{Max} (\varphi(x), \psi(x)) \text{ ist Treppenfunktion auf D})\]
 	\item[4)] Ränder von n-dim Quadern sind n-dim Nullmengen.
 \end{itemize}
 Im Folgenden ist zunächst meist $D=\overline{Q}$, $Q$ ist Quader, d. h. D ist abgeschlossener Quader oder $D=\mathbb{R}^n$\\
 Das ist im Folgenden definierte \underline{Lebesgue-Integral} ist im Vergleich zum Riemannintegral
 \begin{itemize}
 	\item allgemeiner (mehr integrierbare Funktionen)
-	\item hat "schönere" (Konvergenz-) Eigenschaften
+	\item hat „schönere“ (Konvergenz-) Eigenschaften
 \end{itemize}
 
-\underline{Idee:} Ähnlich wie beim Riemannintegral f durch Treppenfuktionen approximieren.
-\underline{Sprechweise:} Sei $D \subseteq \mathbb{R}^n$, wir sagen, eine Eigenschaft (z. B. f stetig bei $x \in D$) ist fast überall (f.ü.) erfüllt, falls
-\[N=\{x \in D | x \text{erfüllt die Eigenschaft nicht}\}\]
-eine (n-dim) Nullmenge ist.
+\underline{Idee:} Ähnlich wie beim Riemannintegral f durch Treppenfuktionen approximieren.\\
 
-\underline{Schlüsselidee:} punktweise Konvergenz $\varphi_n \longrightarrow^{n \to \infty} f$ f. ü.\\
-	(d.h. $\exists N \subseteq D \text{Nullmenge:} \forall x \in D \setminus N \colon \lim_{n \to \infty} \varphi_n(x)=f(x)$) und damit
-	\[\int_D f(x) \text{d}x = \lim_{n \to \infty} \int_D \varphi_n(x) \text{d}x\]
+\underline{Sprechweise:} Sei $D \subseteq \mathbb{R}^n$, wir sagen, eine Eigenschaft (z. B. f stetig bei $x \in D$) ist fast überall (f.ü.) erfüllt, falls
+\[N=\{x \in D | x \text{ erfüllt die Eigenschaft nicht}\}\]
+eine (n-dim) Nullmenge ist.\\
+
+\underline{Schlüsselidee:} punktweise Konvergenz $\varphi_n \underrightarrow{n \to \infty} f$ f. ü.\\
+	(d.h. $\exists N \subseteq D \text{ Nullmenge: } \forall x \in D \setminus N \colon \lim_{n \to \infty} \varphi_n(x)=f(x)$) und damit
+	\[\int_D f(x) \text{d}x = \lim_{n \to \infty} \left(\int_D \varphi_n(x) \text{d}x\right)\]
+
+Die präzise Definition erfordert mehrere Schritte:
+
+\subsubsection{Definition}
+\begin{itemize}
+	\item[a)] Sei $D \subseteq \mathbb{R}^n$ ein abgeschlossener Quader oder $D = \mathbb{R}^n$. Dann ist $L^\uparrow(D)$ definiert als Menge aller Funktion $f \colon D \to \mathbb{R}$ derart, dass eine Folge von Treppenfunktionen $\varphi_n \colon D \to \mathbb{R} (m=1,2,...,n)$ die f.ü. monoton wachsend gegen $f$ konvergiert (d.h. die Menge $\{x \in D | (\varphi_n(x))_n \text{nicht monoton wachsend}\}$ und $\{x \in D | (\varphi(x)_n) \text{konvergiert nicht gegen f(x)}\}$ sind Nullmengen) und für die\\
+	$\lim_{k \mapsto \infty} (\int_D \varphi_k(x) \text{d}x) \in \mathbb{R}$ existiert.
+	\item[b)]  In der Situation von a)
+		\[\int_S f(x) \text{d}x \coloneqq \lim_{k \to \infty} \left(\int_D \varphi_k(x) \text{d}x \right)\] 
+		also für alle $f \in L^\uparrow(D)$.
+\end{itemize}
+
+\subsubsection{Proposition}
+In der Situation von obiger Definition ist $\int_D f(x) \text{d}x$ für $f\in L^\uparrow(D)$ wohldefiniert. Genauer:\\
+Ist $\tilde{\varphi}_n \colon D \to \mathbb{R} (n=1,2,...)$ eine andere f. ü. monoton wachsend gegen $f$ konvergierende Folge von Treppenfuktionen, dann gilt
+\[\lim_{n \to \infty} \left(\int_D \tilde{\varphi}_n (x) \text{d}x\right) = \lim_{n \to \infty} \left(\int_D \varphi_n(x) \text{d}x\right)\]
+
+\underline{Beweis:}
+Verwendet:
+\subsubsection{Lemma} Sei $D \subseteq \mathbb{R}^n$ abgeschlossener Quader oder $D= \mathbb{R}^n$. Sei $\varphi_n \colon D \to \mathbb{R} (n=1,2,3,...)$ Folge von Treppenfuktionen mit $\varphi_n \geq 0$ f. ü. und die f. ü. monoton fällt und f. ü. gegen 0 konvergiert.\\
+Dann gilt:
+\[\lim_{k \to \infty} \left(\int_D\varphi_k(x)\text{d}x\right) = 0\]
+Den Beweis hierfür kann für n=1 auf Seite 607 im Arens anchgelesen werden.\\
+
+\underline{Vorab:} Die Folgen $\left(\int_D \varphi_k (x) \text{d}x\right)_k, \left(\int_D \tilde{\varphi}_k (x) \text{d}x\right)_k$ sind nach Definition monoton wachsend.\\
+Das heißt es genügt zu zeigen: $\forall_{\epsilon > 0} \forall_{k_0 \in \mathbb{N}} \exists_{k_1,k_2 \in \mathbb{N}_{\geq k_0}}$ mit
+
+\begin{align}
+	\int_D \varphi_{k_1}(x) \text{d}x > \int_D \tilde{\varphi}_{k_0}(x) \text{d}x - \epsilon \label{eq:Gl1}\\
+	\int_D \varphi_{k_2}(x) \text{d}x > \int_D \tilde{\varphi}_{k_0}(x) \text{d}x - \epsilon \label{eq:Gl2}
+\end{align}
+
+\underline{Dazu:} Für $k \geq k_0$ betrachte $\varphi_k \colon D \to \mathbb{R}$ definiert durch
+\[\psi_k(x) \coloneqq \text{max} \left( \tilde{\varphi}_{k_0}(x) - \varphi_k(x), 0\right) \geq 0\]
+Da $\varphi_k \underrightarrow{k \to \infty} f , \, \tilde{\varphi_k} \underrightarrow{k \to \infty} f$ f. ü. monton, erfüllt $(\psi_n)_n$ die Voraussetzung von obigem Lemma. Also existiert $k_1 \geq k$ mit $\int_D \varphi_{k_1}(x) \text{d}x < \epsilon$\\
+\[\Rightarrow \int_D \varphi_{k_1}(x) \text{d}x \geq \int_D \left(\tilde{\varphi}_{k_0} - \varphi_{k_1}\right)(x)\text{d}x\]
+\[= \int_D \tilde{\varphi}_{k_0}(x)\text{d}x - \int_D \varphi_{k_1}(x)\text{d}x\]
+Damit folgt die Gleichung \ref{eq:Gl1}, \ref{eq:Gl2} wird analog gezeigt.
+
+\subsubsection{Proposition}
+Sei $D \subseteq \mathbb{R}^n$ abgeschlossener Quader oder $D = \mathbb{R}^n$ und seien $f,g \in L^\uparrow(D)$
+\begin{itemize}
+	\item[a)] Sind $\alpha, \beta \in \mathbb{R}_{\geq 0}$, dann gilt auch $\alpha f + \beta g \in L^\uparrow(D)$ und \[\int_D \left(\alpha f(x) + \beta g(x)\right) \text{d}x = \alpha \int_D f(x) \text{d}x + \beta \int_D g(x) \text{d}x\]
+	\item[b)] $f \geq g$ f. ü. $\Rightarrow$ \[\int_D f(x) \text{d}x \geq \int_D g(x) \text{d}x\]
+	\item[c)] $\text{min}(f,g) \in L^\uparrow (D)$ mit \[\int_D \text{min}(f,g)(x) \text{d}x \geq \text{min} \left(\int_D f(x)\text{d}x, \int_D g(x)\text{d}x\right)\]   
+\end{itemize}
+
+\underline{Beweisskizze} Es gelte $\varphi_n \underrightarrow{n \to \infty} f, \psi_n \underrightarrow{n \to \infty} g$ für monoton wachsend mit Treppenfuktionen $\varphi_n, \psi_n \colon D \to \mathbb{R}$
+\begin{itemize}
+	\item[a)] $\Phi_n \coloneqq \alpha \varphi_n + \beta \psi_n$, dann ist $\Phi_n \colon D \to \mathbb{R}$ Treppenfunktionen und da $\alpha, \beta >0$ gilt: \[\alpha\varphi_n \underrightarrow{n \to \infty} \alpha f, \beta\psi_n \underrightarrow{n \to \infty} \beta g\] f. ü. monoton wachsend, also \[\alpha \varphi_n + \beta \psi_n \underrightarrow{n \to \infty} \alpha f + \beta g\] f. ü. monoton wachsend und \[\integ{D}{\left(\alpha\varphi_n(x) + \beta\psi_n(x)\right)} = \alpha \integ{D}{\varphi_n(x) } + \beta\integ{D}{\psi_n(x)}\] woraus die Behauptung folgt.
+	\item[b)] Gelte $f \geq g$ f. ü., sei $\tilde{\varphi}_n \coloneqq \text{max}(\varphi_n, \psi_n)$, dann ist $\varphi_n \colon D \to  \mathbb{R}$ Treppenfunktion mit $\varphi_n \leq \tilde{\varphi}_n \leq f$ f. ü. und $(\tilde{\varphi}_n(x))_n$ f. ü. monoton wachsend, d.h. \[\tilde{\varphi}_n \underrightarrow{n \to \infty} f \text{f. ü. monoton wachsend,}\]
+	\[d.h. \integ{D}{f(x)} = \lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \geq \lim_{n \to \infty} \integ{D}{\psi_n(x)} = \integ{D}{g(x)}\]
+	nach der Definition.
+	\item[c)] $\tilde{\varphi}_n = \text{max}(\varphi_n,\psi_n)$ ist eine Treppenfunktion, $\tilde{\varphi}_n \colon D \to \mathbb{R}$ mit $\tilde{\varphi_n} \underrightarrow{n \to \infty} \text{min}(f,g)$ f. ü. monoton wachsend mit \[\integ{D}{\tilde{\varphi}_n(x)} \leq \integ{D}{\varphi_n(x)} \leq \integ{D}{f(x)} \in \mathbb{R}\] Da monoton wachsende beschränkte Folgen reeller Zahlen konvergieren, folgt \[\lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \in \mathbb{R} \text{ existiert, d. h. min}(f,g) \in L^\uparrow(D) \text{ mit}\] \[\integ{D}{\text{min}(f,g)(x)} = \lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \leq \text{min}\left(\lim_{n \to \infty} \int{D}{\varphi_n(x)}, \lim_{n \to \infty} \integ{D}{\psi_n(x)}\right)\]
+\end{itemize}
