@@ -1,6 +1,6 @@
 \subsection{Topologische Grundbegriffe}
 \begin{itemize}
-	\item Eine Menge $A \subset \mathbb{R}$ heißt \underline{beschränkt}, falls
+	\item Eine Menge $A \subset \mathbb{R}^n$ heißt \underline{beschränkt}, falls
 	\[\exists_{c \in \mathbb{R}^n, r \in \mathbb{R}_{>0}} A \subset B_r(c),\] wobei \[B_r(c)\coloneqq \{x \in \mathbb{R}^n| ||x-c|| < r\}\] die offene n-dimensionale Kugel um $c$ mit Radius $r$ ist.
 	\item $A \subset \mathbb{R}^n$ heißt \underline{offen} genau dann, wenn gilt:
 	\[\forall_{a \in A} \exists_{\epsilon > 0} B_{\epsilon}(a) \subset A.\]
@@ -26,12 +26,12 @@
 	Für  ein kompaktes $K \subset \mathbb{R}^n$ gilt: Ist $(U_i)_{i \in I}$ eine Familie offener Mengen, das heißt $U_i \subset \mathbb{R}^n$ ist offen und gilt $K \subset \bigcup_{i \in I} U_i$, dann existiert ein $J \subset I$ mit $|J| \le \infty$ und $K \subset \bigcup_{i \in J} U_i$.\\
 	
 	In Worten heißt das, dass jede offene Überdeckung einer kompakten Menge eine endliche Teilmenge besitzt.
-	\begin{itemize}
-		\item[-] Sei $K \subset \mathbb{R}^n$ mit $A_i \subset K (I \in I)$ abgeschlossene Teilmengen, mit $\bigcap_{i \in I} A_i = \emptyset$, dann folgt:
+	\underline{Behauptung:}
+		Sei $K \subset \mathbb{R}^n$ mit $A_i \subset K (I \in I)$ abgeschlossene Teilmengen, mit $\bigcap_{i \in I} A_i = \emptyset$, dann folgt:
 		\[ \exists_{J \subset I} J > \infty \wedge \bigcap_{i \in J} A_i = \emptyset \]
-		\underline{Beweis:} Sei $U_i \coloneqq \mathbb{R}^n \setminus A_i \, (i \in I)$, dann folgt
+	\underline{Beweis:}
+		Sei $U_i \coloneqq \mathbb{R}^n \setminus A_i \, (i \in I)$, dann folgt
 		\[ \bigcup_{i \in I} U_i = \bigcup_{i \in I} (\mathbb{R}^n \setminus A_i) = \mathbb{R}^n \setminus \bigcap_{i \in I} A_i = \mathbb{R}^n \setminus \emptyset = \mathbb{R}^n \supset K \]
 		\[\Rightarrow \exists_{J \subset I}\colon |J| < \infty \wedge K \subset \bigcup_{i \in J} U_i\]
 		\[\Rightarrow K \subset U_{i \in J} (\mathbb{R}^n \setminus A_i) = \mathbb{R}^n \setminus \bigcap_{i \in J} A_i = \emptyset\]
-	\end{itemize}
  \end{itemize}

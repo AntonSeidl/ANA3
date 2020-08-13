@@ -24,3 +24,39 @@ Aber: $1 = \mu([0,1]) = \sum_{q \in [0,1[} \mu(R_q) = \sum_{q \in [0,1[} \mu(R) 
 0, & x \ne A
 \end{matrix}
 \right .$ derart, dass obige Eigenschaften erfüllt sind. Also kann kein solches „universelles“ Integral existieren.
+
+\subsubsection{Definition}
+\begin{itemize}
+	\item[a)] Sei $D \subseteq \mathbb{R}^n$, dann heißt $\varphi :D \to \mathbb{R}^n$ Treppenfunktion auf D, falls
+		\[ \exists \text{Quader} Q_1, Q_2, ..., Q_l \subseteq \mathbb{R}^n \text{paarweise disjunkt mit} \overline{D} \supseteq \bigcup\limit_{i=1}^l \overline{Q_i}
+		\text{derart, dass} \varphi \text{für jedes} i = 1,2,...,l \text{konstant auf dem Quader} Q_i \text{ist und} f(x) = 0 \forall x \in D\setminus \bigcup\limit_{i=1}^l\]
+	\item[b)] Das Integral der Treppenfuktion \varphi\colon D \to \mathbb{R} aus a) ist definiert durch
+		\[ \int_D \varphi(x) \text{d}x = \sum\limit_{i=1}^l \varphi(\xi_i) \mu(Q_i)\]
+		wobei $\xi_i \in Q_i (i=1,...,l)$ beliebige Stützstellen sind. 
+\end{itemize}
+
+\underline{Bemerkung}
+\begin{itemize}
+	\item[1)] Für $n=1$ ist das äquivalent zur Definition aus AN 1/2
+	\item[2)] Integraldefinition ist wohldefiniert, insbesondere unabhängig von der gewählten Unterteilung im Quader $Q_i$
+	\item[3)] Menge der Treppenfuktionen auf D ist abgeschlossen unter Linearkombination
+	\[(\varphi, \psi \text{Treppenfuktionen auf D} \alpha, \beta \in \mathbb{R} \Rightarrow \alpha\varphi + \beta\psi \text{Treppenfuktionen auf D})\]
+	und unter Max/Min.
+	\[(x \mapsto Max (\varphi(x), \psi(x)) \text{ist Treppenfunktion auf D})\]
+	\item[4)] Ränder von n-dim Quadern sind n-dim Nullmengen.
+\end{itemize}
+Im Folgenden ist zunächst meist $D=\overline{Q}$, $Q$ ist Quader, d. h. D ist abgeschlossener Quader oder $D=\mathbb{R}^n$\\
+Das ist im Folgenden definierte \underline{Lebesgue-Integral} ist im Vergleich zum Riemannintegral
+\begin{itemize}
+	\item allgemeiner (mehr integrierbare Funktionen)
+	\item hat "schönere" (Konvergenz-) Eigenschaften
+\end{itemize}
+
+\underline{Idee:} Ähnlich wie beim Riemannintegral f durch Treppenfuktionen approximieren.
+\underline{Sprechweise:} Sei $D \subseteq \mathbb{R}^n$, wir sagen, eine Eigenschaft (z. B. f stetig bei $x \in D$) ist fast überall (f.ü.) erfüllt, falls
+\[N=\{x \in D | x \text{erfüllt die Eigenschaft nicht}\}\]
+eine (n-dim) Nullmenge ist.
+
+\underline{Schlüsselidee:} punktweise Konvergenz $\varphi_n \longrightarrow^{n \to \infty} f$ f. ü.\\
+	(d.h. \exists N \subseteq D \text{Nullmenge:} \forall x \in D \setminus N \colon \lim_{n \to \infty} \varphi_n(x)=f(x)) und damit
+	\[\int_D f(x) \text{d}x = \lim_{n \to \infty} \int_D \varphi_n(x) \text{d}x\]
