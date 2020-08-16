@@ -1,9 +1,7 @@
 \subsection{Lebesgue-Nullmengen}
 Ein n-dimensionaler Quader $Q \subset \mathbb{R}^n$ im $\mathbb{R}^n$ ist ein karthesisches Produkt $Q = ]a_1,b_1[ \times ]a_2,b_2[ \times ... \times ]a_n,b_n[$ offener Intervalle mit $a_i,b_i \in \mathbb{R}$ und $a_i \leq b_i (i=1,...,n)$. Insbesondere ist damit $Q = \emptyset$ ein Quader.
-\[ \mu(Q)\coloneqq (b_1 - a_1)(b_2 - a_2)...(b_n - a_n)\] nennen wir das Maß von $Q$
-
-Ist $M = Q_1 \dot\cup Q_2 \dot{\cup} ... \dot{\cup Q_k}$ die disjunkte Vereinigung n-dimensionaler Quader $Q_i$ $(i=1,2,...k)$, dann definieren wir $\mu(M)\coloneqq \sum_{i=1}^{k} \mu(Q_i)$
-
+\[ \mu(Q)\coloneqq (b_1 - a_1)(b_2 - a_2)...(b_n - a_n)\] nennen wir das Maß von $Q$.\\
+Ist $M = Q_1 \dot\cup Q_2 \dot{\cup} ... \dot{\cup} Q_k$ die disjunkte Vereinigung n-dimensionaler Quader $Q_i$ $(i=1,2,...k)$, dann definieren wir $\mu(M)\coloneqq \sum_{i=1}^{k} \mu(Q_i)$.\\
 \underline{Bermerkung:}
 Wir haben Quader als offene Menge definiert. Falls wir Randpunkte zulassen, werden wir das als Ausnahme kennzeichnen.
 \underline{Sonderfälle:}
@@ -16,9 +14,11 @@ Wir haben Quader als offene Menge definiert. Falls wir Randpunkte zulassen, werd
 \end{equation*}
 
 
-\subsubsection{Definition Nullmenge}
-Eine Menge $N \subset \mathbb{R}^n$ nennt man n-dimensionale (Lebesgue-)Nullmenge, falls gilt:
-\[\forall_{\epsilon > 0} \exists_{Q_i \in \mathbb{R}^n} N \subset \bigcup_{i =1}^{\infty} \text{ und } \sum_{i=1}^{\infty} \mu(Q_i) < \epsilon\]
+\begin{definition}[Nullmenge]
+	Eine Menge $N \subset \mathbb{R}^n$ nennt man n-dimensionale (Lebesgue-)Nullmenge, falls gilt:
+	\[\forall_{\epsilon > 0} \exists_{Q_i \in \mathbb{R}^n} N \subset \bigcup_{i =1}^{\infty} \text{ und } \sum_{i=1}^{\infty} \mu(Q_i) < \epsilon\]
+\end{definition}
+
 
 \underline{Bemerkungen:}
 \begin{itemize}
@@ -57,11 +57,13 @@ Damit folgt:
 \end{itemize}
 \end{itemize}
 
-\subsubsection{Proposition}
+\begin{proposition}\leavevmode
 \begin{itemize}
-	\item Jede Teilmenge $N' \subset N$ einer n-dim. Nullmenge $N \subset \mathbb{R}^n$ ist eine n-dim Nullmenge.\item Sind $N_1, N_2, N_3, ... \subset \mathbb{R}^n$ n- dim. Nullmengen, dann ist auch $N = \bigcup_{k=1}^\infty N_k$ n-dim. Nullmengen.
+	\item Jede Teilmenge $N' \subset N$ einer n-dim. Nullmenge $N \subset \mathbb{R}^n$ ist eine n-dim Nullmenge.
+	\item Sind $N_1, N_2, N_3, ... \subset \mathbb{R}^n$ n- dim. Nullmengen, dann ist auch $N = \bigcup_{k=1}^\infty N_k$ n-dim. Nullmengen.
 \end{itemize}
-\underline{Beweis}
+\end{proposition}
+\begin{proof}\leavevmode
 \begin{itemize}
 	\item klar nach Definition
 	\item Sei $\epsilon > 0$. Nach Voraussetzung existieren Quader $Q_{k,i} \, (k,i) \in \mathbb{N}$ mit:
@@ -75,5 +77,6 @@ Damit folgt:
 		\end{matrix}\\
 	\end{equation*}	
 	Also: $N = \bigcup_{k=1}^{\infty} N_k \subset \bigcup_{k,i \in \mathbb{N}} Q_{k,i}, \sum_{k=1}^{\infty}\sum_{i=1}^{\infty} \mu(Q_{k,i}) < \sum_{k=1}^{\infty} \frac{\epsilon}{2^k} = \epsilon$
-	\proofend
 \end{itemize}
+
+\end{proof}

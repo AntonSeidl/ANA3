@@ -1,31 +1,35 @@
 \subsection{Das Lebesgue-Integral}
 
 Das Ziel ist eine größere Klasse integrierbarer Funktionen, als beim Riemannintegral. Dazu sei vorab erwähnt, dass es bei jedem plausiblen Integralsbegriff nichtintegrierbare Funktionen $f\colon [a,b] \to \mathbb{R}$ gibt.\\
-\underline{Behauptung:} Es gibt keine Funktion (Maß) $\mu\colon P([0,1]) \to [0,1]$ derart, dass
+\begin{claim_n} Es gibt keine Funktion (Maß) $\mu\colon P([0,1]) \to [0,1]$ derart, dass
 \begin{itemize}
 	\item $\mu([0,1]) = 1, \, \mu(\emptyset) = 0$
-	\item Ist $A = A_1 \dot{\cup A_2} \dot{\cup} ... \,(A_i \subset [0,1])$, dann $\mu(A) = \sum_{i=1}^{\infty} \mu(A_i)$
+	\item Ist $A = A_1 \dot{\cup} A_2 \dot{\cup} ... \,(A_i \subset [0,1])$, dann $\mu(A) = \sum_{i=1}^{\infty} \mu(A_i)$
 	\item Für $A \subset [0,1], \alpha \in [0,1], A_{\alpha} \coloneqq \{y + \alpha | y \in A\} \subset [0,1]$ dann $\mu(A_{\alpha}) = \mu(A)$
 \end{itemize}
-\underline{Beweis:} Für $x,y\in [0,1]$ definiere $x \sim y \Leftrightarrow x-y \in \mathbb{Q}$\\
+\end{claim_n}
+\begin{proof} Für $x,y\in [0,1]$ definiere $x \sim y \Leftrightarrow x-y \in \mathbb{Q}$\\
 Das heißt $[0,1]$ zerfällt in Äquivalenzklassen und es gibt ein Repräsentantensystem $R \subset [0,1]$. $R$ enthält aus jeder Äquivalenzklasse genau ein Element.\\
-Für $q\in \mathbb{Q} \cap [0,1[$ definiere $R_q = \{y + q | y \in R, y \in [0,1-q]\} \dot{\cup} \{ y+q-1|y \in ]1-q,1] \}$.\\
-Dann gilt: $[0,1] = \dot{\bigcup_{q\in[0,1[}} R_q$\\
-Denn die $R_q$ sind paarweise disjunkt, sonst gäbe es zwei Elemente $x\neq y$ von R mit $x-y \in \mathbb{Q}$ und für jedes $x \in [0,1]$ existiert ein $y \in R$ mit $x-y \in \mathbb{Q} \Rightarrow x = y + q \lor x = y + q - 1$ für $q\in [0,1[$ geeignet gewählt.\\
-Aber: $1 = \mu([0,1]) = \sum_{q \in [0,1[} \mu(R_q) = \sum_{q \in [0,1[} \mu(R) =
+Für $q\in \mathbb{Q} \cap [0,1[$ definiere 
+\[
+	R_q = \{y + q | y \in R, y \in [0,1-q]\} \dot{\cup} \{ y+q-1|y \in ]1-q,1] \}
+\]
+Dann gilt: $[0,1] = \dot{\bigcup}_{q\in[0,1[} R_q$, denn die $R_q$ sind paarweise disjunkt. Sonst gäbe es zwei Elemente $x\neq y$ von R mit $x-y \in \mathbb{Q}$ und für jedes $x \in [0,1]$ existiert ein $y \in R$ mit $x-y \in \mathbb{Q} \Rightarrow x = y + q \lor x = y + q - 1$ für $q\in [0,1[$ geeignet gewählt.\\
+Aber: \[1 = \mu([0,1]) = \sum_{q \in [0,1[} \mu(R_q) = \sum_{q \in [0,1[} \mu(R) =
 \left \{
 \begin{matrix}
 0\\
 \infty
 \end{matrix}
-\right . \lightning$\\
+\right . \lightning\]
+\end{proof}
 \underline{Folgerung:} Ein vernünftiger Integralbegriff für alle Funktionen $f\colon [0,1] \to \mathbb{R}$ sollte insbesondere für Indikatorfunktionen von Mengen $A \subset [0,1]$ einen Wert $\mu(A)\coloneqq \int_{a}^{b} I_A(x) \text{d}x$ liefern, mit $I_A(x) \coloneqq \left \{ \begin{matrix}
 1, & x \in A\\
 0, & x \ne A
 \end{matrix}
 \right .$ derart, dass obige Eigenschaften erfüllt sind. Also kann kein solches „universelles“ Integral existieren.
 
-\subsubsection{Definition}
+\begin{definition}[Treppenfunktion]\leavevmode
 \begin{itemize}
 	\item[a)] Sei $D \subseteq \mathbb{R}^n$, dann heißt $\varphi :D \to \mathbb{R}^n$ Treppenfunktion auf D, falls
 		\[ \exists \text{Quader } Q_1, Q_2, ..., Q_l \subseteq \mathbb{R}^n \text{ paarweise disjunkt mit } \overline{D} \supseteq \bigcup_{i=1}^l \overline{Q_i}\]
@@ -34,6 +38,7 @@ Aber: $1 = \mu([0,1]) = \sum_{q \in [0,1[} \mu(R_q) = \sum_{q \in [0,1[} \mu(R) 
 		\[ \int_D \varphi(x) \text{d}x = \sum_{i=1}^l \varphi(\xi_i) \mu(Q_i)\]
 		wobei $\xi_i \in Q_i (i=1,...,l)$ beliebige Stützstellen sind. 
 \end{itemize}
+\end{definition}
 
 \underline{Bemerkung}
 \begin{itemize}
@@ -50,7 +55,7 @@ Das ist im Folgenden definierte \underline{Lebesgue-Integral} ist im Vergleich z
 \begin{itemize}
 	\item allgemeiner (mehr integrierbare Funktionen)
 	\item hat „schönere“ (Konvergenz-) Eigenschaften
-\end{itemize}
+\end{itemize} 
 
 \underline{Idee:} Ähnlich wie beim Riemannintegral f durch Treppenfuktionen approximieren.\\
 
@@ -58,26 +63,27 @@ Das ist im Folgenden definierte \underline{Lebesgue-Integral} ist im Vergleich z
 \[N=\{x \in D | x \text{ erfüllt die Eigenschaft nicht}\}\]
 eine (n-dim) Nullmenge ist.\\
 
-\underline{Schlüsselidee:} punktweise Konvergenz $\varphi_n \underrightarrow{n \to \infty} f$ f. ü.\\
+\underline{Schlüsselidee:} punktweise Konvergenz $\varphi_n \xrightarrow[n \to \infty]{}f$ f. ü.\\
 	(d.h. $\exists N \subseteq D \text{ Nullmenge: } \forall x \in D \setminus N \colon \lim_{n \to \infty} \varphi_n(x)=f(x)$) und damit
 	\[\int_D f(x) \text{d}x = \lim_{n \to \infty} \left(\int_D \varphi_n(x) \text{d}x\right)\]
 
 Die präzise Definition erfordert mehrere Schritte:
 
-\subsubsection{Definition}
+\begin{definition}\leavevmode
 \begin{itemize}
-	\item[a)] Sei $D \subseteq \mathbb{R}^n$ ein abgeschlossener Quader oder $D = \mathbb{R}^n$. Dann ist $L^\uparrow(D)$ definiert als Menge aller Funktion $f \colon D \to \mathbb{R}$ derart, dass eine Folge von Treppenfunktionen $\varphi_n \colon D \to \mathbb{R} (m=1,2,...,n)$ die f.ü. monoton wachsend gegen $f$ konvergiert (d.h. die Menge $\{x \in D | (\varphi_n(x))_n \text{nicht monoton wachsend}\}$ und $\{x \in D | (\varphi(x)_n) \text{konvergiert nicht gegen f(x)}\}$ sind Nullmengen) und für die\\
+	\item[a)] Sei $D \subseteq \mathbb{R}^n$ ein abgeschlossener Quader oder $D = \mathbb{R}^n$. Dann ist $L^\uparrow(D)$ definiert als Menge aller Funktion $f \colon D \to \mathbb{R}$ derart, dass eine Folge von Treppenfunktionen $\varphi_n \colon D \to \mathbb{R} (m=1,2,...,n)$ die f.ü. monoton wachsend gegen $f$ konvergiert (d.h. die Menge $\{x \in D | (\varphi_n(x))_n\ \text{nicht monoton wachsend}\}$ und $\{x \in D | (\varphi(x)_n)\ \text{konvergiert nicht gegen f(x)}\}$ sind Nullmengen) und für die\\
 	$\lim_{k \mapsto \infty} (\int_D \varphi_k(x) \text{d}x) \in \mathbb{R}$ existiert.
 	\item[b)]  In der Situation von a)
 		\[\int_S f(x) \text{d}x \coloneqq \lim_{k \to \infty} \left(\int_D \varphi_k(x) \text{d}x \right)\] 
 		also für alle $f \in L^\uparrow(D)$.
 \end{itemize}
+\end{definition}
 
-\subsubsection{Proposition}
+\begin{proposition}
 In der Situation von obiger Definition ist $\int_D f(x) \text{d}x$ für $f\in L^\uparrow(D)$ wohldefiniert. Genauer:\\
 Ist $\tilde{\varphi}_n \colon D \to \mathbb{R} (n=1,2,...)$ eine andere f. ü. monoton wachsend gegen $f$ konvergierende Folge von Treppenfuktionen, dann gilt
 \[\lim_{n \to \infty} \left(\int_D \tilde{\varphi}_n (x) \text{d}x\right) = \lim_{n \to \infty} \left(\int_D \varphi_n(x) \text{d}x\right)\]
-
+\end{proposition}
 \underline{Beweis:}
 Verwendet:
 \subsubsection{Lemma} Sei $D \subseteq \mathbb{R}^n$ abgeschlossener Quader oder $D= \mathbb{R}^n$. Sei $\varphi_n \colon D \to \mathbb{R} (n=1,2,3,...)$ Folge von Treppenfuktionen mit $\varphi_n \geq 0$ f. ü. und die f. ü. monoton fällt und f. ü. gegen 0 konvergiert.\\
@@ -95,7 +101,7 @@ Das heißt es genügt zu zeigen: $\forall_{\epsilon > 0} \forall_{k_0 \in \mathb
 
 \underline{Dazu:} Für $k \geq k_0$ betrachte $\varphi_k \colon D \to \mathbb{R}$ definiert durch
 \[\psi_k(x) \coloneqq \text{max} \left( \tilde{\varphi}_{k_0}(x) - \varphi_k(x), 0\right) \geq 0\]
-Da $\varphi_k \underrightarrow{k \to \infty} f , \, \tilde{\varphi_k} \underrightarrow{k \to \infty} f$ f. ü. monton, erfüllt $(\psi_n)_n$ die Voraussetzung von obigem Lemma. Also existiert $k_1 \geq k$ mit $\int_D \varphi_{k_1}(x) \text{d}x < \epsilon$\\
+Da $\varphi_k \xrightarrow[k \to \infty]{}f , \, \tilde{\varphi_k} \xrightarrow[k \to \infty]{}f$ f. ü. monton, erfüllt $(\psi_n)_n$ die Voraussetzung von obigem Lemma. Also existiert $k_1 \geq k$ mit $\int_D \varphi_{k_1}(x) \text{d}x < \epsilon$\\
 \[\Rightarrow \int_D \varphi_{k_1}(x) \text{d}x \geq \int_D \left(\tilde{\varphi}_{k_0} - \varphi_{k_1}\right)(x)\text{d}x\]
 \[= \int_D \tilde{\varphi}_{k_0}(x)\text{d}x - \int_D \varphi_{k_1}(x)\text{d}x\]
 Damit folgt die Gleichung \ref{eq:Gl1}, \ref{eq:Gl2} wird analog gezeigt.
@@ -108,11 +114,11 @@ Sei $D \subseteq \mathbb{R}^n$ abgeschlossener Quader oder $D = \mathbb{R}^n$ un
 	\item[c)] $\text{min}(f,g) \in L^\uparrow (D)$ mit \[\int_D \text{min}(f,g)(x) \text{d}x \geq \text{min} \left(\int_D f(x)\text{d}x, \int_D g(x)\text{d}x\right)\]   
 \end{itemize}
 
-\underline{Beweisskizze} Es gelte $\varphi_n \underrightarrow{n \to \infty} f, \psi_n \underrightarrow{n \to \infty} g$ für monoton wachsend mit Treppenfuktionen $\varphi_n, \psi_n \colon D \to \mathbb{R}$
+\underline{Beweisskizze} Es gelte $\varphi_n \xrightarrow[n \to \infty]{} f, \psi_n \xrightarrow[n \to \infty]{}g$ für monoton wachsend mit Treppenfuktionen $\varphi_n, \psi_n \colon D \to \mathbb{R}$
 \begin{itemize}
-	\item[a)] $\Phi_n \coloneqq \alpha \varphi_n + \beta \psi_n$, dann ist $\Phi_n \colon D \to \mathbb{R}$ Treppenfunktionen und da $\alpha, \beta >0$ gilt: \[\alpha\varphi_n \underrightarrow{n \to \infty} \alpha f, \beta\psi_n \underrightarrow{n \to \infty} \beta g\] f. ü. monoton wachsend, also \[\alpha \varphi_n + \beta \psi_n \underrightarrow{n \to \infty} \alpha f + \beta g\] f. ü. monoton wachsend und \[\integ{D}{\left(\alpha\varphi_n(x) + \beta\psi_n(x)\right)} = \alpha \integ{D}{\varphi_n(x) } + \beta\integ{D}{\psi_n(x)}\] woraus die Behauptung folgt.
-	\item[b)] Gelte $f \geq g$ f. ü., sei $\tilde{\varphi}_n \coloneqq \text{max}(\varphi_n, \psi_n)$, dann ist $\varphi_n \colon D \to  \mathbb{R}$ Treppenfunktion mit $\varphi_n \leq \tilde{\varphi}_n \leq f$ f. ü. und $(\tilde{\varphi}_n(x))_n$ f. ü. monoton wachsend, d.h. \[\tilde{\varphi}_n \underrightarrow{n \to \infty} f \text{f. ü. monoton wachsend,}\]
+	\item[a)] $\Phi_n \coloneqq \alpha \varphi_n + \beta \psi_n$, dann ist $\Phi_n \colon D \to \mathbb{R}$ Treppenfunktionen und da $\alpha, \beta >0$ gilt: \[\alpha\varphi_n \xrightarrow[n \to \infty]{}\alpha f, \beta\psi_n \xrightarrow[n \to \infty]{}\beta g\] f. ü. monoton wachsend, also \[\alpha \varphi_n + \beta \psi_n \xrightarrow[n \to \infty]{}\alpha f + \beta g\] f. ü. monoton wachsend und \[\integ{D}{\left(\alpha\varphi_n(x) + \beta\psi_n(x)\right)} = \alpha \integ{D}{\varphi_n(x) } + \beta\integ{D}{\psi_n(x)}\] woraus die Behauptung folgt.
+	\item[b)] Gelte $f \geq g$ f. ü., sei $\tilde{\varphi}_n \coloneqq \text{max}(\varphi_n, \psi_n)$, dann ist $\varphi_n \colon D \to  \mathbb{R}$ Treppenfunktion mit $\varphi_n \leq \tilde{\varphi}_n \leq f$ f. ü. und $(\tilde{\varphi}_n(x))_n$ f. ü. monoton wachsend, d.h. \[\tilde{\varphi}_n \xrightarrow[n \to \infty]{}f \text{f. ü. monoton wachsend,}\]
 	\[d.h. \integ{D}{f(x)} = \lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \geq \lim_{n \to \infty} \integ{D}{\psi_n(x)} = \integ{D}{g(x)}\]
 	nach der Definition.
-	\item[c)] $\tilde{\varphi}_n = \text{max}(\varphi_n,\psi_n)$ ist eine Treppenfunktion, $\tilde{\varphi}_n \colon D \to \mathbb{R}$ mit $\tilde{\varphi_n} \underrightarrow{n \to \infty} \text{min}(f,g)$ f. ü. monoton wachsend mit \[\integ{D}{\tilde{\varphi}_n(x)} \leq \integ{D}{\varphi_n(x)} \leq \integ{D}{f(x)} \in \mathbb{R}\] Da monoton wachsende beschränkte Folgen reeller Zahlen konvergieren, folgt \[\lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \in \mathbb{R} \text{ existiert, d. h. min}(f,g) \in L^\uparrow(D) \text{ mit}\] \[\integ{D}{\text{min}(f,g)(x)} = \lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \leq \text{min}\left(\lim_{n \to \infty} \int{D}{\varphi_n(x)}, \lim_{n \to \infty} \integ{D}{\psi_n(x)}\right)\]
+	\item[c)] $\tilde{\varphi}_n = \text{max}(\varphi_n,\psi_n)$ ist eine Treppenfunktion, $\tilde{\varphi}_n \colon D \to \mathbb{R}$ mit $\tilde{\varphi_n} \xrightarrow[n \to \infty]{} \text{min}(f,g)$ f. ü. monoton wachsend mit \[\integ{D}{\tilde{\varphi}_n(x)} \leq \integ{D}{\varphi_n(x)} \leq \integ{D}{f(x)} \in \mathbb{R}\] Da monoton wachsende beschränkte Folgen reeller Zahlen konvergieren, folgt \[\lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \in \mathbb{R} \text{ existiert, d. h. min}(f,g) \in L^\uparrow(D) \text{ mit}\] \[\integ{D}{\text{min}(f,g)(x)} = \lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \leq \text{min}\left(\lim_{n \to \infty} \int{D}{\varphi_n(x)}, \lim_{n \to \infty} \integ{D}{\psi_n(x)}\right)\]
 \end{itemize}

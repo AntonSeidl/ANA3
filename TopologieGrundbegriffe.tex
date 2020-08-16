@@ -1,4 +1,4 @@
-\subsection{Topologische Grundbegriffe}
+\subsection*{Topologische Grundbegriffe}
 \begin{itemize}
 	\item Eine Menge $A \subset \mathbb{R}^n$ heißt \underline{beschränkt}, falls
 	\[\exists_{c \in \mathbb{R}^n, r \in \mathbb{R}_{>0}} A \subset B_r(c),\] wobei \[B_r(c)\coloneqq \{x \in \mathbb{R}^n| ||x-c|| < r\}\] die offene n-dimensionale Kugel um $c$ mit Radius $r$ ist.
@@ -25,13 +25,16 @@
 	\item Eine Menge $K \subset \mathbb{R}^n$ heißt \underline{kompakt} in topologischen Räumen, falls sie abgeschlossen und beschränkt ist.\\
 	Für  ein kompaktes $K \subset \mathbb{R}^n$ gilt: Ist $(U_i)_{i \in I}$ eine Familie offener Mengen, das heißt $U_i \subset \mathbb{R}^n$ ist offen und gilt $K \subset \bigcup_{i \in I} U_i$, dann existiert ein $J \subset I$ mit $|J| \le \infty$ und $K \subset \bigcup_{i \in J} U_i$.\\
 	
-	In Worten heißt das, dass jede offene Überdeckung einer kompakten Menge eine endliche Teilmenge besitzt.
+	In Worten heißt das, dass jede offene Überdeckung einer kompakten Menge eine endliche Teilmenge besitzt.\\
 	\underline{Behauptung:}
-		Sei $K \subset \mathbb{R}^n$ mit $A_i \subset K (I \in I)$ abgeschlossene Teilmengen, mit $\bigcap_{i \in I} A_i = \emptyset$, dann folgt:
-		\[ \exists_{J \subset I} J > \infty \wedge \bigcap_{i \in J} A_i = \emptyset \]
+		Sei $K \subset \mathbb{R}^n$ mit $A_i \subset K \hspace{0.5em} (i \in I)$ abgeschlossene Teilmengen, mit $\bigcap_{i \in I} A_i = \emptyset$, dann folgt:
+		\[ \exists_{J \subset I} |J| < \infty \quad \wedge \quad \bigcap_{i \in J} A_i = \emptyset \]
 	\underline{Beweis:}
-		Sei $U_i \coloneqq \mathbb{R}^n \setminus A_i \, (i \in I)$, dann folgt
-		\[ \bigcup_{i \in I} U_i = \bigcup_{i \in I} (\mathbb{R}^n \setminus A_i) = \mathbb{R}^n \setminus \bigcap_{i \in I} A_i = \mathbb{R}^n \setminus \emptyset = \mathbb{R}^n \supset K \]
-		\[\Rightarrow \exists_{J \subset I}\colon |J| < \infty \wedge K \subset \bigcup_{i \in J} U_i\]
-		\[\Rightarrow K \subset U_{i \in J} (\mathbb{R}^n \setminus A_i) = \mathbb{R}^n \setminus \bigcap_{i \in J} A_i = \emptyset\]
+		Sei $U_i \coloneqq \mathbb{R}^n \setminus A_i \quad (i \in I)$, dann folgt
+		\begin{align*}
+			&\bigcup_{i \in I} U_i = \bigcup_{i \in I} (\mathbb{R}^n \setminus A_i) = \mathbb{R}^n \setminus \bigcap_{i \in I} A_i = \mathbb{R}^n \setminus \emptyset = \mathbb{R}^n \supset K\\
+			\Rightarrow\quad &\exists_{J \subset I}\colon |J| < \infty \quad\wedge\quad K \subset \bigcup_{i \in J} U_i \\
+			\Rightarrow\quad &K \subset \bigcup_{i \in J} (\mathbb{R}^n \setminus A_i) = \mathbb{R}^n \setminus \underbrace{\bigcap_{i \in J} A_i}_{\subseteq K}\\
+	\Rightarrow\quad &\bigcap_{i\in J}A_i=\emptyset
+		\end{align*}
  \end{itemize}
