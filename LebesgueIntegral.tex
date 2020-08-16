@@ -2,42 +2,42 @@
 
 Das Ziel ist eine größere Klasse integrierbarer Funktionen, als beim Riemannintegral. Dazu sei vorab erwähnt, dass es bei jedem plausiblen Integralsbegriff nichtintegrierbare Funktionen $f\colon [a,b] \to \mathbb{R}$ gibt.\\
 \begin{claim_n} Es gibt keine Funktion (Maß) $\mu\colon P([0,1]) \to [0,1]$ derart, dass
-\begin{itemize}
-	\item $\mu([0,1]) = 1, \, \mu(\emptyset) = 0$
-	\item Ist $A = A_1 \dot{\cup} A_2 \dot{\cup} ... \,(A_i \subset [0,1])$, dann $\mu(A) = \sum_{i=1}^{\infty} \mu(A_i)$
-	\item Für $A \subset [0,1], \alpha \in [0,1], A_{\alpha} \coloneqq \{y + \alpha | y \in A\} \subset [0,1]$ dann $\mu(A_{\alpha}) = \mu(A)$
-\end{itemize}
+	\begin{itemize}
+		\item $\mu([0,1]) = 1, \, \mu(\emptyset) = 0$
+		\item Ist $A = A_1 \dot{\cup} A_2 \dot{\cup} ... \,(A_i \subset [0,1])$, dann $\mu(A) = \sum_{i=1}^{\infty} \mu(A_i)$
+		\item Für $A \subset [0,1], \alpha \in [0,1], A_{\alpha} \coloneqq \{y + \alpha | y \in A\} \subset [0,1]$ dann $\mu(A_{\alpha}) = \mu(A)$
+	\end{itemize}
 \end{claim_n}
 \begin{proof} Für $x,y\in [0,1]$ definiere $x \sim y \Leftrightarrow x-y \in \mathbb{Q}$\\
-Das heißt $[0,1]$ zerfällt in Äquivalenzklassen und es gibt ein Repräsentantensystem $R \subset [0,1]$. $R$ enthält aus jeder Äquivalenzklasse genau ein Element.\\
-Für $q\in \mathbb{Q} \cap [0,1[$ definiere 
-\[
-	R_q = \{y + q | y \in R, y \in [0,1-q]\} \dot{\cup} \{ y+q-1|y \in ]1-q,1] \}
-\]
-Dann gilt: $[0,1] = \dot{\bigcup}_{q\in[0,1[} R_q$, denn die $R_q$ sind paarweise disjunkt. Sonst gäbe es zwei Elemente $x\neq y$ von R mit $x-y \in \mathbb{Q}$ und für jedes $x \in [0,1]$ existiert ein $y \in R$ mit $x-y \in \mathbb{Q} \Rightarrow x = y + q \lor x = y + q - 1$ für $q\in [0,1[$ geeignet gewählt.\\
-Aber: \[1 = \mu([0,1]) = \sum_{q \in [0,1[} \mu(R_q) = \sum_{q \in [0,1[} \mu(R) =
-\left \{
-\begin{matrix}
-0\\
-\infty
-\end{matrix}
-\right . \lightning\]
+	Das heißt $[0,1]$ zerfällt in Äquivalenzklassen und es gibt ein Repräsentantensystem $R \subset [0,1]$. $R$ enthält aus jeder Äquivalenzklasse genau ein Element.\\
+	Für $q\in \mathbb{Q} \cap [0,1[$ definiere 
+	\[
+		R_q = \{y + q | y \in R, y \in [0,1-q]\} \dot{\cup} \{ y+q-1|y \in ]1-q,1] \}
+	\]
+	Dann gilt: $[0,1] = \dot{\bigcup}_{q\in[0,1[} R_q$, denn die $R_q$ sind paarweise disjunkt. Sonst gäbe es zwei Elemente $x\neq y$ von R mit $x-y \in \mathbb{Q}$ und für jedes $x \in [0,1]$ existiert ein $y \in R$ mit $x-y \in \mathbb{Q} \Rightarrow x = y + q \lor x = y + q - 1$ für $q\in [0,1[$ geeignet gewählt.\\
+	Aber: \[1 = \mu([0,1]) = \sum_{q \in [0,1[} \mu(R_q) = \sum_{q \in [0,1[} \mu(R) =
+		\left \{
+		\begin{matrix}
+			0 \\
+			\infty
+		\end{matrix}
+		\right . \lightning\]
 \end{proof}
 \underline{Folgerung:} Ein vernünftiger Integralbegriff für alle Funktionen $f\colon [0,1] \to \mathbb{R}$ sollte insbesondere für Indikatorfunktionen von Mengen $A \subset [0,1]$ einen Wert $\mu(A)\coloneqq \int_{a}^{b} I_A(x) \text{d}x$ liefern, mit $I_A(x) \coloneqq \left \{ \begin{matrix}
-1, & x \in A\\
-0, & x \ne A
-\end{matrix}
-\right .$ derart, dass obige Eigenschaften erfüllt sind. Also kann kein solches „universelles“ Integral existieren.
+		1, & x \in A \\
+		0, & x \ne A
+	\end{matrix}
+	\right .$ derart, dass obige Eigenschaften erfüllt sind. Also kann kein solches „universelles“ Integral existieren.
 
 \begin{definition}[Treppenfunktion]\leavevmode
-\begin{itemize}
-	\item[a)] Sei $D \subseteq \mathbb{R}^n$, dann heißt $\varphi :D \to \mathbb{R}^n$ Treppenfunktion auf D, falls
-		\[ \exists \text{Quader } Q_1, Q_2, ..., Q_l \subseteq \mathbb{R}^n \text{ paarweise disjunkt mit } \overline{D} \supseteq \bigcup_{i=1}^l \overline{Q_i}\]
-		derart, dass $\varphi$ für jedes $i = 1,2,...,l$ konstant auf dem Quader $Q_i$ ist und \[f(x) = 0 \forall x \in D\setminus \bigcup\lim_{i=1}^l\]
-	\item[b)] Das Integral der Treppenfuktion $\varphi\colon D \to \mathbb{R}$ aus a) ist definiert durch
-		\[ \int_D \varphi(x) \text{d}x = \sum_{i=1}^l \varphi(\xi_i) \mu(Q_i)\]
-		wobei $\xi_i \in Q_i (i=1,...,l)$ beliebige Stützstellen sind. 
-\end{itemize}
+	\begin{itemize}
+		\item[a)] Sei $D \subseteq \mathbb{R}^n$, dann heißt $\varphi :D \to \mathbb{R}^n$ Treppenfunktion auf D, falls
+		      \[ \exists \text{Quader } Q_1, Q_2, ..., Q_l \subseteq \mathbb{R}^n \text{ paarweise disjunkt mit } \overline{D} \supseteq \bigcup_{i=1}^l \overline{Q_i}\]
+		      derart, dass $\varphi$ für jedes $i = 1,2,...,l$ konstant auf dem Quader $Q_i$ ist und \[f(x) = 0 \forall x \in D\setminus \bigcup\lim_{i=1}^l\]
+		\item[b)] Das Integral der Treppenfuktion $\varphi\colon D \to \mathbb{R}$ aus a) ist definiert durch
+		      \[ \int_D \varphi(x) \text{d}x = \sum_{i=1}^l \varphi(\xi_i) \mu(Q_i)\]
+		      wobei $\xi_i \in Q_i (i=1,...,l)$ beliebige Stützstellen sind. 
+	\end{itemize}
 \end{definition}
 
 \underline{Bemerkung}
@@ -45,9 +45,9 @@ Aber: \[1 = \mu([0,1]) = \sum_{q \in [0,1[} \mu(R_q) = \sum_{q \in [0,1[} \mu(R)
 	\item[1)] Für $n=1$ ist das äquivalent zur Definition aus AN 1/2
 	\item[2)] Integraldefinition ist wohldefiniert, insbesondere unabhängig von der gewählten Unterteilung im Quader $Q_i$
 	\item[3)] Menge der Treppenfuktionen auf D ist abgeschlossen unter Linearkombination
-	\[(\varphi, \psi \text{ Treppenfunktionen auf D } \alpha, \beta \in \mathbb{R} \Rightarrow \alpha\varphi + \beta\psi \text{ Treppenfuktionen auf D})\]
-	und unter Max/Min.
-	\[(x \mapsto \text{Max} (\varphi(x), \psi(x)) \text{ ist Treppenfunktion auf D})\]
+	      \[(\varphi, \psi \text{ Treppenfunktionen auf D } \alpha, \beta \in \mathbb{R} \Rightarrow \alpha\varphi + \beta\psi \text{ Treppenfuktionen auf D})\]
+	      und unter Max/Min.
+	      \[(x \mapsto \text{Max} (\varphi(x), \psi(x)) \text{ ist Treppenfunktion auf D})\]
 	\item[4)] Ränder von n-dim Quadern sind n-dim Nullmengen.
 \end{itemize}
 Im Folgenden ist zunächst meist $D=\overline{Q}$, $Q$ ist Quader, d. h. D ist abgeschlossener Quader oder $D=\mathbb{R}^n$\\
@@ -55,7 +55,7 @@ Das ist im Folgenden definierte \underline{Lebesgue-Integral} ist im Vergleich z
 \begin{itemize}
 	\item allgemeiner (mehr integrierbare Funktionen)
 	\item hat „schönere“ (Konvergenz-) Eigenschaften
-\end{itemize} 
+\end{itemize}
 
 \underline{Idee:} Ähnlich wie beim Riemannintegral f durch Treppenfuktionen approximieren.\\
 
@@ -64,25 +64,25 @@ Das ist im Folgenden definierte \underline{Lebesgue-Integral} ist im Vergleich z
 eine (n-dim) Nullmenge ist.\\
 
 \underline{Schlüsselidee:} punktweise Konvergenz $\varphi_n \xrightarrow[n \to \infty]{}f$ f. ü.\\
-	(d.h. $\exists N \subseteq D \text{ Nullmenge: } \forall x \in D \setminus N \colon \lim_{n \to \infty} \varphi_n(x)=f(x)$) und damit
-	\[\int_D f(x) \text{d}x = \lim_{n \to \infty} \left(\int_D \varphi_n(x) \text{d}x\right)\]
+(d.h. $\exists N \subseteq D \text{ Nullmenge: } \forall x \in D \setminus N \colon \lim_{n \to \infty} \varphi_n(x)=f(x)$) und damit
+\[\int_D f(x) \text{d}x = \lim_{n \to \infty} \left(\int_D \varphi_n(x) \text{d}x\right)\]
 
 Die präzise Definition erfordert mehrere Schritte:
 
 \begin{definition}\leavevmode
-\begin{itemize}
-	\item[a)] Sei $D \subseteq \mathbb{R}^n$ ein abgeschlossener Quader oder $D = \mathbb{R}^n$. Dann ist $L^\uparrow(D)$ definiert als Menge aller Funktion $f \colon D \to \mathbb{R}$ derart, dass eine Folge von Treppenfunktionen $\varphi_n \colon D \to \mathbb{R} (m=1,2,...,n)$ die f.ü. monoton wachsend gegen $f$ konvergiert (d.h. die Menge $\{x \in D | (\varphi_n(x))_n\ \text{nicht monoton wachsend}\}$ und $\{x \in D | (\varphi(x)_n)\ \text{konvergiert nicht gegen f(x)}\}$ sind Nullmengen) und für die\\
-	$\lim_{k \mapsto \infty} (\int_D \varphi_k(x) \text{d}x) \in \mathbb{R}$ existiert.
-	\item[b)]  In der Situation von a)
-		\[\int_S f(x) \text{d}x \coloneqq \lim_{k \to \infty} \left(\int_D \varphi_k(x) \text{d}x \right)\] 
-		also für alle $f \in L^\uparrow(D)$.
-\end{itemize}
+	\begin{itemize}
+		\item[a)] Sei $D \subseteq \mathbb{R}^n$ ein abgeschlossener Quader oder $D = \mathbb{R}^n$. Dann ist $L^\uparrow(D)$ definiert als Menge aller Funktion $f \colon D \to \mathbb{R}$ derart, dass eine Folge von Treppenfunktionen $\varphi_n \colon D \to \mathbb{R} (m=1,2,...,n)$ die f.ü. monoton wachsend gegen $f$ konvergiert (d.h. die Menge $\{x \in D | (\varphi_n(x))_n\ \text{nicht monoton wachsend}\}$ und $\{x \in D | (\varphi(x)_n)\ \text{konvergiert nicht gegen f(x)}\}$ sind Nullmengen) und für die\\
+		      $\lim_{k \mapsto \infty} (\int_D \varphi_k(x) \text{d}x) \in \mathbb{R}$ existiert.
+		\item[b)]  In der Situation von a)
+		      \[\int_S f(x) \text{d}x \coloneqq \lim_{k \to \infty} \left(\int_D \varphi_k(x) \text{d}x \right)\]
+		      also für alle $f \in L^\uparrow(D)$.
+	\end{itemize}
 \end{definition}
 
 \begin{proposition}
-In der Situation von obiger Definition ist $\int_D f(x) \text{d}x$ für $f\in L^\uparrow(D)$ wohldefiniert. Genauer:\\
-Ist $\tilde{\varphi}_n \colon D \to \mathbb{R} (n=1,2,...)$ eine andere f. ü. monoton wachsend gegen $f$ konvergierende Folge von Treppenfuktionen, dann gilt
-\[\lim_{n \to \infty} \left(\int_D \tilde{\varphi}_n (x) \text{d}x\right) = \lim_{n \to \infty} \left(\int_D \varphi_n(x) \text{d}x\right)\]
+	In der Situation von obiger Definition ist $\int_D f(x) \text{d}x$ für $f\in L^\uparrow(D)$ wohldefiniert. Genauer:\\
+	Ist $\tilde{\varphi}_n \colon D \to \mathbb{R} (n=1,2,...)$ eine andere f. ü. monoton wachsend gegen $f$ konvergierende Folge von Treppenfuktionen, dann gilt
+	\[\lim_{n \to \infty} \left(\int_D \tilde{\varphi}_n (x) \text{d}x\right) = \lim_{n \to \infty} \left(\int_D \varphi_n(x) \text{d}x\right)\]
 \end{proposition}
 \underline{Beweis:}
 Verwendet:
@@ -95,7 +95,7 @@ Den Beweis hierfür kann für n=1 auf Seite 607 im Arens anchgelesen werden.\\
 Das heißt es genügt zu zeigen: $\forall_{\epsilon > 0} \forall_{k_0 \in \mathbb{N}} \exists_{k_1,k_2 \in \mathbb{N}_{\geq k_0}}$ mit
 
 \begin{align}
-	\int_D \varphi_{k_1}(x) \text{d}x > \int_D \tilde{\varphi}_{k_0}(x) \text{d}x - \epsilon \label{eq:Gl1}\\
+	\int_D \varphi_{k_1}(x) \text{d}x > \int_D \tilde{\varphi}_{k_0}(x) \text{d}x - \epsilon \label{eq:Gl1} \\
 	\int_D \varphi_{k_2}(x) \text{d}x > \int_D \tilde{\varphi}_{k_0}(x) \text{d}x - \epsilon \label{eq:Gl2}
 \end{align}
 
@@ -111,14 +111,116 @@ Sei $D \subseteq \mathbb{R}^n$ abgeschlossener Quader oder $D = \mathbb{R}^n$ un
 \begin{itemize}
 	\item[a)] Sind $\alpha, \beta \in \mathbb{R}_{\geq 0}$, dann gilt auch $\alpha f + \beta g \in L^\uparrow(D)$ und \[\int_D \left(\alpha f(x) + \beta g(x)\right) \text{d}x = \alpha \int_D f(x) \text{d}x + \beta \int_D g(x) \text{d}x\]
 	\item[b)] $f \geq g$ f. ü. $\Rightarrow$ \[\int_D f(x) \text{d}x \geq \int_D g(x) \text{d}x\]
-	\item[c)] $\text{min}(f,g) \in L^\uparrow (D)$ mit \[\int_D \text{min}(f,g)(x) \text{d}x \geq \text{min} \left(\int_D f(x)\text{d}x, \int_D g(x)\text{d}x\right)\]   
+	\item[c)] $\text{min}(f,g) \in L^\uparrow (D)$ mit \[\int_D \text{min}(f,g)(x) \text{d}x \geq \text{min} \left(\int_D f(x)\text{d}x, \int_D g(x)\text{d}x\right)\]
 \end{itemize}
 
 \underline{Beweisskizze} Es gelte $\varphi_n \xrightarrow[n \to \infty]{} f, \psi_n \xrightarrow[n \to \infty]{}g$ für monoton wachsend mit Treppenfuktionen $\varphi_n, \psi_n \colon D \to \mathbb{R}$
 \begin{itemize}
 	\item[a)] $\Phi_n \coloneqq \alpha \varphi_n + \beta \psi_n$, dann ist $\Phi_n \colon D \to \mathbb{R}$ Treppenfunktionen und da $\alpha, \beta >0$ gilt: \[\alpha\varphi_n \xrightarrow[n \to \infty]{}\alpha f, \beta\psi_n \xrightarrow[n \to \infty]{}\beta g\] f. ü. monoton wachsend, also \[\alpha \varphi_n + \beta \psi_n \xrightarrow[n \to \infty]{}\alpha f + \beta g\] f. ü. monoton wachsend und \[\integ{D}{\left(\alpha\varphi_n(x) + \beta\psi_n(x)\right)} = \alpha \integ{D}{\varphi_n(x) } + \beta\integ{D}{\psi_n(x)}\] woraus die Behauptung folgt.
 	\item[b)] Gelte $f \geq g$ f. ü., sei $\tilde{\varphi}_n \coloneqq \text{max}(\varphi_n, \psi_n)$, dann ist $\varphi_n \colon D \to  \mathbb{R}$ Treppenfunktion mit $\varphi_n \leq \tilde{\varphi}_n \leq f$ f. ü. und $(\tilde{\varphi}_n(x))_n$ f. ü. monoton wachsend, d.h. \[\tilde{\varphi}_n \xrightarrow[n \to \infty]{}f \text{f. ü. monoton wachsend,}\]
-	\[d.h. \integ{D}{f(x)} = \lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \geq \lim_{n \to \infty} \integ{D}{\psi_n(x)} = \integ{D}{g(x)}\]
-	nach der Definition.
-	\item[c)] $\tilde{\varphi}_n = \text{max}(\varphi_n,\psi_n)$ ist eine Treppenfunktion, $\tilde{\varphi}_n \colon D \to \mathbb{R}$ mit $\tilde{\varphi_n} \xrightarrow[n \to \infty]{} \text{min}(f,g)$ f. ü. monoton wachsend mit \[\integ{D}{\tilde{\varphi}_n(x)} \leq \integ{D}{\varphi_n(x)} \leq \integ{D}{f(x)} \in \mathbb{R}\] Da monoton wachsende beschränkte Folgen reeller Zahlen konvergieren, folgt \[\lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \in \mathbb{R} \text{ existiert, d. h. min}(f,g) \in L^\uparrow(D) \text{ mit}\] \[\integ{D}{\text{min}(f,g)(x)} = \lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \leq \text{min}\left(\lim_{n \to \infty} \int{D}{\varphi_n(x)}, \lim_{n \to \infty} \integ{D}{\psi_n(x)}\right)\]
+	      \[d.h. \integ{D}{f(x)} = \lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \geq \lim_{n \to \infty} \integ{D}{\psi_n(x)} = \integ{D}{g(x)}\]
+	      nach der Definition.
+	\item[c)] $\tilde{\varphi}_n = \text{max}(\varphi_n,\psi_n)$ ist eine Treppenfunktion, $\tilde{\varphi}_n \colon D \to \mathbb{R}$ mit $\tilde{\varphi_n} \xrightarrow[n \to \infty]{} \text{min}(f,g)$ f. ü. monoton wachsend mit \[\integ{D}{\tilde{\varphi}_n(x)} \leq \integ{D}{\varphi_n(x)} \leq \integ{D}{f(x)} \in \mathbb{R}\] Da monoton wachsende beschränkte Folgen reeller Zahlen konvergieren, folgt \[\lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \in \mathbb{R} \text{ existiert, d. h. min}(f,g) \in L^\uparrow(D) \text{ mit}\] \[\integ{D}{\text{min}(f,g)(x)} = \lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \leq \text{min}\left(\lim_{n \to \infty} \integ{D}{\varphi_n(x)}, \lim_{n \to \infty} \integ{D}{\psi_n(x)}\right)\]
 \end{itemize}
+
+\begin{satz}\leavevmode
+	\begin{itemize}
+		\item[a)] Im Fall $n=1$, $D=[a, b]\ \ (a<b,\, a,b\in\mathbb{R})$ gilt:\\
+		Jede Riemann-Int'bare Funktion $f\colon D\to\mathbb{R}$ liegt in $L^\uparrow(D)$ mit \[\integ{D}{f(x)}=\int_a^bf(x) \text{d}x\]
+		\item[b)] Sei $D\subseteq \mathbb{R}^n$ ein abgeschlossener Quader, $f\colon D\to\mathbb{R}$ eine beschränkte Funktion die f.ü. stetig ist, so gilt $f\in L^\uparrow(D)$.
+	\end{itemize}
+\end{satz}
+\begin{proof}
+	Zuhause
+\end{proof}
+
+\underline{Beispiele:}\\
+\begin{enumerate}
+	\item \begin{itemize}
+		\item Dirichlet'sche Sprungfunktion:\\
+	\begin{align*}
+		f\colon [0,1] &\to \mathbb{R}\\
+		x&\mapsto \left\{\begin{matrix}
+			1 & \text{falls } x \in\mathbb{Q}\\
+			0 & \text{sonst}
+		\end{matrix}\right.
+	\end{align*}
+	Dann gilt $f\in L^\uparrow(D)$ obwohl $f$ überall unstetig ist mit $\integ{D}{f(x)}=0$\\
+	Denn mit $\varphi_n\colon [0, 1]\to \mathbb{R};\;x\mapsto 0$ gilt: $\varphi_n$ ist Treppenfunktion auf $D=[0,1]$ und $\varphi_n\xrightarrow[n\to\infty]{}f$ f.ü. monoton wachsend, da $[0,1]\cap\mathbb{Q}$ eine Nullmenge ist.
+
+	\item $g=1-f, g(x)=\left\{\begin{matrix}
+		0 & \text{falls }  x \in\mathbb{Q}\\
+		1 & \text{sonst}
+	\end{matrix}\right.\Rightarrow g\in L^\uparrow(D)\ \text{mit}\ \integ{D}{g(x)}=1$ .
+	\end{itemize}
+	\item Übung 1.8\\
+	???
+\end{enumerate}
+
+\begin{definition}[Lebesgue-integrierbar]
+	Sei $D\subseteq\mathbb{R}^n$ ein abgeschlossener Quader oder $\mathbb{R}^n$. $f\colon D\to\mathbb{R}$ heißt \underline{Lebesgue-integrierbar} ($f\in L(D)$), falls $\exists g,h\in L^\uparrow(D)$ mit $f=g-h$.\\
+	Das Lebesgue-Integral von $f$ ist definiert durch
+	\[
+		\integ{D}{f(x)}\coloneqq\integ{D}{g(x)}-\integ{D}{h(x)}	
+	\]
+\end{definition}
+
+\begin{proposition}
+	Das Integral $\integ{D}{f(x)}$ ist für $f\in L(D)$ wohldefiniert.
+\end{proposition}
+\begin{proof}
+	Seien $g,\tilde{g},h,\tilde{h}\in L^\uparrow(D)$ mit $f=g-h=\tilde{g}-\tilde{h}$.\\
+	Zu zeigen ist \[\integ{D}{g(x)}-\integ{D}{h(x)} = \integ{D}{\tilde{g}(x)}-\integ{D}{\tilde{h}(x)}\]
+	Es gilt $g+\tilde{h}=\tilde{g}+h\in L^\uparrow(D)$ mit 
+	\begin{align*}
+		\integ{D}{g(x)}+\integ{D}{\tilde{h}(x)}
+		&=\integ{D}{g(x)+\tilde{h}(x)}\\
+		=\integ{D}{\tilde{g}(x)+h(x)}
+		&=\integ{D}{\tilde{g}(x)}+\integ{D}{h(x)}\\
+		&\Rightarrow \text{Behauptung}
+	\end{align*}
+\end{proof}
+Da für $f\in L^\uparrow(D)$ gilt $f=f-0$ und $-f = 0 - f$, und $0\in L^\uparrow(D)$, folgt $f,-f\in L(D)$, insbesondere $L^\uparrow(D)\subset L(D)$.\\
+Weiter $\forall f_1,f_2\in L(D), \alpha, \beta\in\mathbb{R}$ gilt $\alpha f_1 + \beta f_2\in L(D)$ (denn mit $f_1=g_1-h_1;\; f_2=g_2-h_2$ gilt:\\
+Hat man $\alpha f_1+\beta f_2=|\alpha|(\underbrace{\pm f_1}_{\in L(D)})+|\beta|(\underbrace{\pm f_2}_{\in L(D)})$. Es genügt also, die Aussage für $\alpha, \beta\geq 0$ zu zeigen.\\
+Nun folgt direkt 
+\[
+	\alpha f_1+\beta f_2 = (\underbrace{\alpha g_1 + \beta g_2}_{\in L^\uparrow(D)}) - (\underbrace{\alpha h_1 + \beta h_2}_{\in L^\uparrow(D)})\in L(D)
+\]
+$\integ{D}{\alpha f_1(x)+\beta f_2(x)}=\alpha\integ{D}{f_1(x)}+\beta\integ{D}{f_2(x)}$ folgt analog.
+
+
+\begin{proposition}\leavevmode
+	\begin{itemize}
+		\item[a)] $f,g\in L(D),\,\alpha,\beta\in\mathbb{R}\Rightarrow (\alpha f+\beta g)\in L(D)$
+		und \\$\integ{D}{\alpha f(x)+\beta g(x)} =\alpha\integ{D}{f(x)}+\beta\integ{D}{g(x)}$
+		\item[b)] Ist $f\in L(D)$ und $\tilde{f}\colon D\to\mathbb{R}$ mit $f=\tilde{f}$ f.ü., dann gilt $\tilde{f}\in L(D)$ mit $\integ{D}{f(x)}=\integ{D}{\tilde{f}(x)}$
+		\item[c)] Sind $f, \tilde{f}\in L(D)$ und $f\leq \tilde{f}$ f.ü., dann gilt $\integ{D}{f(x)} \leq\integ{D}{\tilde{f}(x)}$.
+		\item[d)] Mit $f\in L(D)$ ist auch $|f|\in L(D)$ mit $\left|\integ{D}{f(x)}\right|\leq\integ{D}{|f(x)|}$. 
+	\end{itemize}
+\end{proposition}
+\begin{proof}\leavevmode
+	\begin{itemize}
+		\item[a)] Schon erfolgt.
+		\item[b)] Sei $g\coloneqq f-\tilde{f}$, d.h. $g=0$ f.ü. $\Rightarrow g\in L^\uparrow(D)$ mit $\integ{D}{g}=0$ (Wähle $\varphi_n = 0$)\\
+		Mit $\tilde{f}=f+g\underset{\text{a)}}{\Rightarrow}\tilde{f}\in L(D)$ mit $\integ{D}{\tilde{f}(x)}= \integ{D}{f(x)}+\underbrace{\integ{D}{g(x)}}_{=0}$.
+		\item[c)] Ü 1.9\\
+		Seien $f,\tilde{f}\in L(D)$ mit $f\leq\tilde{f}$ f.ü.\\
+		$\Rightarrow \exists g,h,\tilde{g},\tilde{h}\in L^\uparrow(D)$ mit $g-h=f,\, \tilde{g}-\tilde{h}=\tilde{f}$.\\
+		$\Rightarrow g-h\leq\tilde{g}-\tilde{h}$ f.ü. $\Rightarrow g+\tilde{h} \leq \tilde{g}+h$ f.ü. und $g+\tilde{h},\tilde{g}+h\in L^\uparrow(D)$\\
+		\begin{align*}
+			\Rightarrow \integ{D}{(g(x)+\tilde{h}(x))}&\leq\integ{D}{(\tilde{g}(x)+h(x))}\\
+			\Rightarrow \integ{D}{g(x)}+\integ{D}{\tilde{h}(x)}&\leq\integ{D}{\tilde{g}(x)}+\integ{D}{h(x)}\\
+			\Rightarrow \integ{D}{g(x)}-\integ{D}{h(x)}&\leq\integ{D}{\tilde{g}(x)}-\integ{D}{\tilde{h}(x)}\\
+			\Rightarrow \integ{D}{(g(x)-h(x))}&\leq\integ{D}{(\tilde{g}(x)-\tilde{h}(x))}\\
+		\end{align*}
+		\item[d)] Sei $f\in L(D)\Rightarrow\exists g,h\in L^\uparrow(D)\ \text{mit}\ f=g-h$\\
+		Man hat $|f| = |g-h| = \underbrace{g+h}_{\in L^\uparrow(D)}-2\underbrace{\min\{g,h\}}_{\in L^\uparrow(D)}\in L(D)$.\\
+		Es folgt
+		\[\left.\begin{matrix}
+			f\leq|f|\Rightarrow \integ{D}{f(x)}\leq\integ{D}{|f(x)|}\\
+			-f\leq|f|\Rightarrow -\integ{D}{f(x)}\leq\integ{D}{|f(x)|}
+		\end{matrix}\right\}\Rightarrow\left|\integ{D}{f(x)}\right|\leq\integ{D}{|f(x)|}\]
+		 
+	\end{itemize}
+\end{proof}
