@@ -12,17 +12,18 @@
 \usepackage{booktabs}
 \usepackage{enumitem}
 \usepackage{stmaryrd}
+\usepackage{wasysym}
 
 \newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1{.}}}
-\newcommand{\integ}[2]{\int_#1 #2 \,\text{d}x}
+\newcommand{\integ}[2]{\int_{#1} #2 \,\text{d}x}
 
 
 \theoremstyle{definition}
 \newtheorem{definition}[subsubsection]{Definition}
-
-\theoremstyle{definition}
 \newtheorem{proposition}[subsubsection]{Proposition}
 \newtheorem{satz}[subsubsection]{Satz}
+\newtheorem{korollar}[subsubsection]{Korrolar}
+\newtheorem*{folgerung}{Folgerung}
 
 \theoremstyle{definition}
 \newtheorem{claim}[subsubsection]{Behauptung}
@@ -44,6 +45,6 @@
 \input{LebesgueNullmengen}
 \input{WiederholungRiemann}
 \input{LebesgueIntegral}
-
+\input{Konvergenzsätze}
 
 \end{document}

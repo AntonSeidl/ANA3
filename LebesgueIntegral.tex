@@ -191,6 +191,7 @@ $\integ{D}{\alpha f_1(x)+\beta f_2(x)}=\alpha\integ{D}{f_1(x)}+\beta\integ{D}{f_
 
 
 \begin{proposition}\leavevmode
+\label{integ_rechenregeln}
 	\begin{itemize}
 		\item[a)] $f,g\in L(D),\,\alpha,\beta\in\mathbb{R}\Rightarrow (\alpha f+\beta g)\in L(D)$
 		und \\$\integ{D}{\alpha f(x)+\beta g(x)} =\alpha\integ{D}{f(x)}+\beta\integ{D}{g(x)}$
@@ -221,6 +222,48 @@ $\integ{D}{\alpha f_1(x)+\beta f_2(x)}=\alpha\integ{D}{f_1(x)}+\beta\integ{D}{f_
 			f\leq|f|\Rightarrow \integ{D}{f(x)}\leq\integ{D}{|f(x)|}\\
 			-f\leq|f|\Rightarrow -\integ{D}{f(x)}\leq\integ{D}{|f(x)|}
 		\end{matrix}\right\}\Rightarrow\left|\integ{D}{f(x)}\right|\leq\integ{D}{|f(x)|}\]
-		 
 	\end{itemize}
 \end{proof}
+
+\begin{korollar}
+	Sei $D \subset \mathbb{R}^n$ abgeschlossener Quader oder $D=\mathbb{R}^n$, $f_1, f_2\in L(D)$, dann sind $\min(f_1,f_2), \max(f_1,f_2)\in L(D)$ und 
+	\begin{align*}
+		\integ{D}{\min(f_1(x),f_2(x))}\leq\min\left(\integ{D}{f_1(x)}, \integ{D}{f_2(x)}\right)\\
+		\integ{D}{\max(f_1(x),f_2(x))}\geq\max\left(\integ{D}{f_1(x)}, \integ{D}{f_2(x)}\right)
+	\end{align*}
+\end{korollar}
+\begin{proof}
+	Wegen $\max(a,b) = -\min(-a, -b)$ genügt es, die Aussagen für $\min$ zu zeigen.
+	Es gilt $\min(f_1, f_2)=\frac{1}{2}(f_1+f_2-|f_1-f_2|)\xRightarrow[\text{Prop 1.2.9}]{\text{a), d)}} \min(f_1,f_2)\in L(D)$
+	\begin{align*}
+		&\integ{D}{\frac{1}{2}(f_1(x)+f_2(x)-|f_1(x)-f_2(x)|)} \\
+		= &\frac{1}{2}\left(\integ{D}{f_1(x)}+\integ{D}{f_2(x)}-\integ{D}{|f_1(x)-f_2(x)|)}\right)\\
+		\leq &\frac{1}{2}\left(\integ{D}{f_1(x)}+\integ{D}{f_2(x)}-\left|\integ{D}{f_1(x)}-\integ{D}{f_2(x)|)}\right|\right)\\
+		= &\min\left(\integ{D}{f_1(x)}, \integ{D}{f_2(x)}\right)
+	\end{align*}
+\end{proof}
+
+\begin{proposition}
+	Sei $D$ wie oben, $f\in L(D)$ mit $f\geq 0$ f.ü. und $\integ{D}{f(x)}=0$, dann folgt $f=0$ f.ü. (insbesondere gilt $f\in L(D), f\geq 0$ f.ü. und $\neg (f=0\ \text{f.ü.})$, dann $\integ{D}{f(x)}> 0$)
+\end{proposition}
+\begin{proof}
+	Siehe Arens
+\end{proof}
+
+\begin{folgerung}
+	Seien $f_1, f_2\in L(D)$ mit $f_1\leq f_2$ f.ü. und gelte $\integ{D}{f_1(x)}=\integ{D}{f_2(x)}$, dann folgt 
+	$f_1=f_2$ f.ü., denn mit $f=f_2-f_1$ gilt $f\geq 0$f.ü. und $\integ{D}{f(x)}=\integ{D}{f_2(x)}-\integ{D}{f_1(x)}=0$.
+\end{folgerung}
+\begin{remark}
+	Folgende Eigenschaft kann man leicht zeigen: \\
+	Sei $D\subset\mathbb{R}^n$ abg. Quader, der (bis auf Randpunkte) disjunkte Vereinigung der adg. Quader $D_1, \dots, D_c\subset\mathbb{R}^n$ sei. \\
+	Dann gilt für $f\colon D\to\mathbb{R}$: \\
+	$f\in L(D)\iff\forall i=1,\dots, c\colon \left. f\right|_{D_i}\in L(D_i)$ mit $\left. f\right|_{D_i}\colon D_i\to\mathbb{R};x\mapsto f(x)$.\\
+	Dann gilt
+	\[
+		\integ{D}{f(x)} = \sum_{i=1}^c\integ{D_i}{\left. f\right|_{D_i}(x)}
+	\]
+	Insbesondere ist $D_1\subseteq D_2$ für zwei abg. Quader oder $\mathbb{R}^n$, und gilt für $f\colon D_2\to\mathbb{R}\colon\forall x\in D_2\setminus D_1:f(x)=0$\\
+	Dann gilt $f\in L(D_2)\iff f|_{D_1}\in L(D_1)$\\
+	Dann gilt $\integ{D_2}{f(x)} = \integ{D_1}{f|_{D_1}(x)}$.
+\end{remark}

@@ -1,0 +1,43 @@
+\subsection{Konvergenzsätze}
+Sei $F:\mathbb{R}\to\mathbb{R}\ x\mapsto 0$ und für $n\in\mathbb{N}\; f_n\colon\mathbb{R}\to\mathbb{R}\colon\ x\mapsto\left\{\begin{matrix}
+	1 & \text{falls }n\leq x\leq n+1\\
+	0 & \text{sonst}
+\end{matrix}\right.$\\
+$\Rightarrow$ für alle $x\in\mathbb{R}$ gilt $\lim_{n\to\infty}f_n(x)=0=f(x)$. D.h. $f_n\xrightarrow[n\to\infty]{}f$ punktweise.\\
+Aber $\integ{\mathbb{R}}{f(x)} = 0, \integ{\mathbb{R}}{f_n(x)} = 1$, also $\integ{\mathbb{R}}{f_n(x)}\nrightarrow\integ{\mathbb{R}}{f(x)}$\\
+Bedingungen, unter denen aus $f_n\xrightarrow[n\to\infty]{}f$ folgt $\integ{D}{f_(x)}\xrightarrow[n\to\infty]{}\integ{D}{f(x)}$:\\
+\begin{itemize}
+    \item Ana 1/2: Für Riemann Integrale braucht man gleichmäßige Konvergenz
+    \item Ana 3: Bei Lebesgue Integralen reichen einfachere Bedingungen! (Satz von monotonen bzw. majorisierten Konvergenz)
+\end{itemize}
+\begin{satz}[Monotone Konvergenz, B. Levi]
+    $D\subset\mathbb{R}^n$ abg. Quader oder $D=\mathbb{R}^n$. Ist $f_n\colon D\to\mathbb{R}$ Folge von Funktionen, die f.ü. monoton wachsen. Die Folge der Integrale $\integ{D}{f_n(x)}$ sei beschränkt. Dann konvergiert $(f_n)_n$ f.ü. punktweise gegen ein $f\in L(D)$ mit $\lim_{n\to\infty}\integ{D}{f_n(x)}=\integ{D}{f(x)}$.
+\end{satz}
+\begin{proof}
+    Vorab nach Proposition \ref{integ_rechenregeln} ist $\integ{D}{f_n(x)}$ monoton wachsend, aus der Beschränktheit folgt somit die Konvergenz 
+    \[
+        \lim_{n\to\infty}\integ{D}{f_n(x)}\in\mathbb{R}
+    \]
+    (Arens S. 625)\\
+    Für $f_n\in L^\uparrow(D)$ ist der Beweis "leicht". Für $f_n\in L(D)$, d.h. $f_n=g_n-h_n$ mit $g_n,h_n\in L^\uparrow(D)$ kann man zeigen, dass $h_n$ "klein gewählt" werden kann; damit Rückführung auf $L^\uparrow(D)$-Fall.
+\end{proof}
+Beispiel:\\
+Sei $f\colon [0,1]\to\mathbb{R};\; x\mapsto\left\{\begin{matrix}
+    \sin\left(\frac{1}{x}\right)& x\neq 0\\
+    0 & x = 0
+\end{matrix}\right.$\\
+Frage: $\exists$ Lebesgue-Integral $\integ{[0,1]}{f(x)}$?\\
+Betrachte für $n\in\mathbb{N}\; f_n:[0,1]\to\mathbb{R};\;x\mapsto\left\{\begin{matrix}
+    f(x) & x\geq \frac{1}{n}\\
+    -1 & sonst
+\end{matrix}\right.\\\Rightarrow \forall x\in (0,1]:\;f_n(x)\xrightarrow[n\to\infty]{}f(x)$ und $(f_n(x))_n$ monton wachsend für alle $x\in [0,1]$.\\
+Bemerkung:\\
+Tatsächlich sieht man sofort: $\integ_{[0,1]}{f(x)}=\lim_{n\to\infty}\int_{\frac{1}{n}}^{1}f(x)\,\text{d}x + \lim_{n\to\infty}\int_{0}^{\frac{1}{n}}(-1)\,\text{d}x = \lim_{n\to\infty}\int_{\frac{1}{n}}^{1}f(x)\,\text{d}x$ ist uneigentliches Riemann-Integral $\int_0^1f(x)\,\text{d}x$, dessen Existenz hiermit gezeigt ist.
+\begin{corollary}
+    Sei $D$ wie zuvor. Sei $f\colon D\to\mathbb{R}$ und $D_1\subseteq D_2\subseteq\cdots\subseteq D$ aufsteigende Folge abg. Quader mit $\bigcup_{m=1}^\intfy D_m = D$. Dann gilt:
+    \begin{align*}
+        f\in L(D)\iff \forall_{m=1,2,\dots}\colon f_{|D_m}\in L(D)\\
+        \text{und}\\
+        
+    \end{align*}
+\end{corollary}
