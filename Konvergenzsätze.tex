@@ -32,12 +32,16 @@ Betrachte für $n\in\mathbb{N}\; f_n:[0,1]\to\mathbb{R};\;x\mapsto\left\{\begin{
     -1 & sonst
 \end{matrix}\right.\\\Rightarrow \forall x\in (0,1]:\;f_n(x)\xrightarrow[n\to\infty]{}f(x)$ und $(f_n(x))_n$ monton wachsend für alle $x\in [0,1]$.\\
 Bemerkung:\\
-Tatsächlich sieht man sofort: $\integ_{[0,1]}{f(x)}=\lim_{n\to\infty}\int_{\frac{1}{n}}^{1}f(x)\,\text{d}x + \lim_{n\to\infty}\int_{0}^{\frac{1}{n}}(-1)\,\text{d}x = \lim_{n\to\infty}\int_{\frac{1}{n}}^{1}f(x)\,\text{d}x$ ist uneigentliches Riemann-Integral $\int_0^1f(x)\,\text{d}x$, dessen Existenz hiermit gezeigt ist.
-\begin{corollary}
-    Sei $D$ wie zuvor. Sei $f\colon D\to\mathbb{R}$ und $D_1\subseteq D_2\subseteq\cdots\subseteq D$ aufsteigende Folge abg. Quader mit $\bigcup_{m=1}^\intfy D_m = D$. Dann gilt:
+Tatsächlich sieht man sofort:
+\[\integ{[0,1]}{f(x)} = \lim_{n\to\infty}\int_{\frac{1}{n}}^1f(x)\,\text{d}x + \lim_{n\to\infty}\int_0^{\frac{1}{n}}(-1)\,\text{d}x = \lim_{n\to\infty}\int_{\frac{1}{n}}^1f(x)\,\text{d}x\]
+ist uneigentliches Riemann-Integral $\int_0^1f(x)\,\text{d}x$, dessen Existenz hiermit gezeigt ist.
+
+\begin{korollar}
+    Sei $D$ wie zuvor. Sei $f\colon D\to\mathbb{R}$ und $D_1\subseteq D_2\subseteq\cdots\subseteq D$ aufsteigende Folge abg. Quader mit $\bigcup_{m=1}^\infty D_m = D$. Dann gilt:
     \begin{align*}
         f\in L(D)\iff \forall_{m=1,2,\dots}\colon f_{|D_m}\in L(D)\\
         \text{und}\\
-        
+        \exists C > 0\colon \forall_{m=1,2,\dots}\colon\integ{{D_m}}{|{f_{|D_m}(x)}|} < C\\
     \end{align*}
-\end{corollary}
+    In diesem Fall gilt: $\lim_{m \to infty}\left(\integ{{D_m}}{{f_{|D_m}}(x)}\right) = \integ{D}{f(x)} \in \mathbb{R}$
+\end{korollar}
