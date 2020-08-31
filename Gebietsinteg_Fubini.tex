@@ -20,7 +20,7 @@ Nun Höherdimensional\\
 
 \begin{proof}
     Sei $f\in L(D)$. O. E. $f\in L^\uparrow (D)$ (Allg. Fall $f=g-h \text{ mit } g,h\in L^\uparrow (D)$ folgt unmittelbar) d. h. es existiert eine Folge von Treppenfunktionen $\varphi_n\colon D \to \mathbb{R}$ mit $\varphi_n \to f$ f. ü. mon. wachsend mit
-    \begin{align}\label{GW}
+    \begin{align}\label{GW:proof}
         \int_D f(x,y) \, \text{d}(x,y) = \lim_{n \to \infty} \int_D \varphi_n (x,y) \, \text{d}(x,y)
     \end{align}
     Insbesondere existiert eine (m+n)-dim. Nullmenge $N \subseteq D \subseteq \mathbb{R}^{n+m}$ mit $\varphi_n (x,y) \xrightarrow[n \to\infty]{} f(x,y)$ monoton wachsend für alle $(x,y) \in D\setminus N$
@@ -29,7 +29,7 @@ Nun Höherdimensional\\
     \[\widetilde{N_1} \coloneqq \{x\in D_1\, | \, \underbrace{\{y\in D_2\, |\, (x,y)\in N\}}_{\subseteq D_2} \text{ \underline{keine} n-dim Nullmenge }\} \subseteq D_1\] eine n-dim Nullmenge. Beweis siehe Arens Lemma S. 918
 
     D. h.
-    \begin{align}\label{GW2}
+    \begin{align}\label{GW2:proof}
         \forall_{x\in D_1\setminus \widetilde{N_1}} \text{ fest: } \varphi(x,\cdot) \xrightarrow[n\to\infty]{} f(x,\cdot) \text{ f. ü. mon. wachsend}
     \end{align}
     (d. h. außerhalb einer n-dim Nullmenge $\subseteq D_2$)
@@ -39,16 +39,14 @@ Nun Höherdimensional\\
 
     Die Folge $(\psi_n)_n$ ist monoton wachsend $\forall_{x\in D_1\setminus \widetilde{N_1}}$ (da die $(\varphi_n)_n$ monoton wachsend für alle $(x,y) \in D \setminus N$)
 
-    Wegen der Beschränktheit in Gleichung \eqref{GW} und monotoner Konvergenz existiert
-    \begin{align}\label{GW3}
+    Wegen der Beschränktheit in Gleichung \ref{GW:proof} und monotoner Konvergenz existiert
+    \begin{align}\label{GW3:proof}
         g\in L(D_1) \text{ mit } \psi_n \xrightarrow[n\to\infty]{} g\in L(D_1) \text{ f. ü. mon. wachsend}
     \end{align}
-    mit (wegen Gleichung \eqref{GW})
-    \[
-        \int_D f(x,y) \, \text{d}(x,y) = \int_{D_1} g(x) \, \text{d}x\\
-        \left(=\lim_{n \to \infty} \int_{D_1} \varphi_n (x) \, \text{d}x = \lim_{n\to\infty} \varphi_n (x,y) \, \text{d}(x,y) = \int_D f(x,y) \, \text{d}(x,y)\right)
-    \]
-    Bleibt z.z.: $g(x) = \int_{D_2} f(x,y) \, \text{d}y$ für fast alle $x\in D_1$. Wegen \eqref{GW3} ist $\underbrace{\int_{D_2} \varphi_n (x,y) \, \text{d}y}_{\psi_n (x)}$ für fast alle $x$ beschränkt und mit $\varphi_n (x,y) \xrightarrow[n\to\infty]{} f(x,y)$ für fast alle $y$ mon. konvergent.
+    mit (wegen Gleichung \ref{GW:proof})
+    \[\int_D f(x,y) \, \text{d}(x,y) = \int_{D_1} g(x) \, \text{d}x\\
+        \left(=\lim_{n \to \infty} \int_{D_1} \varphi_n (x) \, \text{d}x = \lim_{n\to\infty} \varphi_n (x,y) \, \text{d}(x,y) = \int_D f(x,y) \, \text{d}(x,y)\right)\]
+    Bleibt z.z.: $g(x) = \int_{D_2} f(x,y) \, \text{d}y$ für fast alle $x\in D_1$. Wegen \ref{GW3:proof} ist $\underbrace{\int_{D_2} \varphi_n (x,y) \, \text{d}y}_{\psi_n (x)}$ für fast alle $x$ beschränkt und mit $\varphi_n (x,y) \xrightarrow[n\to\infty]{} f(x,y)$ für fast alle $y$ mon. konvergent.
     \begin{align*}
         \Rightarrow \lim_{n\to\infty} \int_{D_2} \varphi_n (x,y) \, \text{d}y &= \int_{D_2} f(x,y) \, \text{d}y \text{ für fast alle } x \in D_1\\
         g(x) = \lim_{n\to\infty} \int_{D_2} \varphi_n (x,y) \, \text{d}y &= \int_{D_2} f(x,y) \, \text{d}y\\
@@ -61,7 +59,7 @@ Nun Höherdimensional\\
 Auch die Vertauschbarkeit der Integration ist dann nicht gesichert. Bsp. siehe Arens S. 925
 \underline{Beispiele}
 \begin{itemize}
-    \item[a)] $f\colon \overbrace{[0,1]\times [-1,2] \times [-2,0]}^{=:D} \to \mathbb{R} \text{ mit } (x,y,z) \mapsto xy^2 z^3 \, f$ ist stetig (da polynom) $\Rightarrow f\in L(D)$\\
+    \item[a)] $f\colon \overbrace{[0,1]\times [-1,2] \times [-2,0]}^{\eqqcolon D} \to \mathbb{R} \text{ mit } (x,y,z) \mapsto xy^2 z^3 \, f$ ist stetig (da polynom) $\Rightarrow f\in L(D)$\\
     Fubini \begin{align*}
         \Rightarrow & \int_D xy^2 z^3 \, \text{d}(x,y,z) &=& \int_{[-2,0]}\left(\int_{[-1,2]}\left(\int_{[0,1]} xy^2 z^3 \, \text{d}x \right)\, \text{d}y\right)\, \text{d}z\\
         & &=& \int_{-2}^0 \left(\int_{-1}^2 \left(\int_0^1 x y^2 z^3 \, \text{d}x\right)\, \text{d}y\right)\, \text{d}z\\
@@ -70,5 +68,76 @@ Auch die Vertauschbarkeit der Integration ist dann nicht gesichert. Bsp. siehe A
         & &=& \int_{-2}^0 [\frac{1}{6} y^3 z^3]_{y=1}^{y=2} \, \text{d}z\\
         & &=& \int_{-2}^0 \frac{3}{2} z^3 \, \text{d}z = [\frac{3}{8} z^4]_{z=-2}^{z=0} = -\frac{3}{8}(-2)^4 = -6
     \end{align*} 
-    \item[b)]  
+    \item[b)] \begin{align*}
+        f\colon \mathbb{R}^2 &\to \mathbb{R} & \text{ mit } A = \{(x,y) \in \mathbb{R}^2 | 0 \leq x \leq 1, \,x \leq y \leq 1\}\\
+        (x,y) &\mapsto \left\{\begin{matrix}
+            xy^2 ,& (x,y) \in A\\
+            0 ,& \text{ sonst}
+        \end{matrix}\right. & = \{(x,y)\in\mathbb{R}^2 | 0\leq y\leq 1, \,0\leq x\leq y\}
+    \end{align*}
+    Mit \ref{Intbar:Lebesgue} folgt, dass $f\in L(\mathbb{R}^2)$, da nur an den Randpunkten des Dreiecks unstetig, das ist aber eine Nullmenge.\\
+    Mit \(f(x,y) = \id_A (x,y)\, xy^2\), Indikatorfunktion \(\id_A (x,y) \coloneqq \left\{ \begin{matrix}
+        1,& (x,y) \in A\\
+        0,& (x,y) \notin A
+    \end{matrix} \right.\)
+    \begin{align*}
+        \int_{\mathbb{R}^2} f(x,y) \,\text{d}(x,y) &= \int_{\mathbb{R}^2} \id_A (x,y) \, xy^2 \, \text{d}(x,y) & \\
+        &= \int_{\mathbb{R}} \left(\int_{\mathbb{R}} \id_A (x,y)\, xy^2 \, \text{d}y \right)\, \text{d}x & \text{(Fubini)} \\
+        &= \int_{\mathbb{R}} \id_{[0,1]}(x) \left(\int_{\mathbb{R}} \id_{[x,1]}(y) \, xy^2 \, \text{d}y \right) \, \text{d}x & \\
+        &= \int_{\mathbb{R}} \id_{[0,1]}(x) \left(\int_x^1 xy^2 \, \text{d}y \right) \,\text{d}x & \\
+        &= \int_{\mathbb{R}} \id_{[0,1]}(x)\, \left[\frac{x}{3}y^3\right]_{y=x}^{y=1} \,\text{d}x & \\
+        &= \int_0^1 (\frac{x}{3} - \frac{x^4}{3}) \,\text{d}x & \\
+        &= \left[\frac{x^2}{6} - \frac{x^5}{15}\right]_{x=0}^{x=1} = \frac{1}{10} &
+    \end{align*}
 \end{itemize}
+\underline{Allgemein:} (Praktische Berechnung) Normalbereiche
+Sei $A \subseteq \mathbb{R}^2$ mit $A= \{(x,y) \in \mathbb{R}^2 \, | \, a \leq x \leq b, \, \alpha (x)\leq y \leq \beta (x)\}$, wobei $a\leq b$ und $\alpha ,\beta \colon [a,b] \to \mathbb{R}$ stetig mit $\alpha (x) \leq \beta (x) \forall_{x\in[a,b]}$\\
+$f\colon \mathbb{R}^2 \to \mathbb{R}$ sei stetig auf $A$ und $O$ auf $\mathbb{R}^2\setminus A$, dann gilt mit Fubini:
+\begin{equation*}
+    \int_{\mathbb{R}^2} f(x,y) \,\text{d}(x,y) = \int_a^b \left(\int_{\alpha (x)}^{\beta (x)} f(x,y) \,\text{d}y\right)\,\text{d}x \eqqcolon \int_A f(x,y) \, \text{d}(x,y)
+\end{equation*}
+Ein $A \subseteq \mathbb{R}^2$ obiger Gestalt nennt man einen Normalbereich in $x$. Gibt es analog $c\leq d, \gamma, \delta\colon [c,d]\to \mathbb{R}$ stetig, $\gamma (y) \leq \delta (y)\forall y\in [c,d]$ mit $A=\{(x,y) \in\mathbb{R}^2\,|\,c\leq y\leq d,\,\gamma (y) \leq x\leq \delta (y)\}$ so nennt man $A$ Normalbereich in $y$. Damit analog
+\begin{equation*}
+    \int_A f(x,y) \,\text{d}(x,y) = \int_c^d \left(\int_{\gamma (y)}^{\delta(y)} f(x,y)\,\text{d}x\right)\,\text{d}y
+\end{equation*}
+
+Nun wollen wir für $D$ eine allgemeinere Gestalt als abgeschlossene Quader bzw. $\mathbb{R}^n$ erreichen.
+
+\begin{definition}\label{def:messbar}
+    \begin{itemize}
+        \item[a)] Eine Funktion $f\colon \mathbb{R}^n\to\mathbb{R}$ heißt \underline{messbar}, falls eine Folge von Treppenfunktionen $\varphi_n\colon\mathbb{R}^n\to\mathbb{R}$ ex. mit $\varphi_n \xrightarrow[n\to\infty]{} f$ f. ü.
+        \item[b)] Eine Menge $A\subseteq \mathbb{R}^n$ heißt \underline{messbar}, falls die Indikatorfunktion \begin{align*}
+            \id_A\colon & \mathbb{R}^n\to\mathbb{R} & \text{ messbar ist.}\\
+            &x\mapsto\left\{\begin{matrix*}
+                1,&x\in A\\
+                0,&x\notin A
+            \end{matrix*}\right. &
+        \end{align*}
+    \end{itemize}
+\end{definition}
+\underline{Bemerkung} Die Definition \ref{def:messbar} ist allgemeiner als für $f\in L^{\uparrow}(D),\, D=\mathbb{R}^n$, da $(\varphi_n)_n$ monoton wachsend f. ü. nicht verlangt wird!
+
+\begin{lemma}
+    \begin{itemize}
+        \item[a)] Jede offene Teilmenge $U\subseteq\mathbb{R}^n$ ist messbar.
+        \item[b)] Jede abgeschlossene Teilmenge $A\subseteq\mathbb{R}^n$ ist messbar. 
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    \begin{itemize}
+        \item[Ad a)] Sei $U\subseteq\mathbb{R}^n$ offen. Für $x\in U$ definiere $\tilde{\text{d}}(x) \coloneqq \text{sup}\{r>0|\text{B}(x)\subseteq U\}\\
+        \text{d}(x) \coloneqq \left\{\begin{matrix}
+            \tilde{\text{d}}(x), & \tilde{\text{d}}(x)\leq 1\\
+            1, & \text{ sonst}
+        \end{matrix}\right.$\\
+        Sei $U \cap \mathbb{Q}^n =\{x_1,x_2,\dots\}$, definier induktiv Treppenfunktionen: \begin{equation*}
+            \varphi_1\coloneqq \id_{Q_{x_1, \,\frac{\text{d}(x_1)}{\sqrt{n}}}}
+        \end{equation*} mit $Q_{y,\epsilon}\coloneqq$ abg. Quader mit Seitenlänge $\epsilon$ und Mittelpunkt $y$, also $Q_{x_1, \,\frac{\text{d}(x_1)}{\sqrt{n}}} \subseteq U$ (Insbesondere $\varphi_1 \leq \id_U$)\\
+        $\varphi_{k+1}\coloneqq\text{max}(\varphi_k,\, \id_{Q_{x_{k+1}, \,\frac{\text{d}(x_{k+1})}{\sqrt{n}}}}) k=1,2,\dots$. $\varphi_k$ sind alle Treppenfunktionen mit $\varphi_k \to \id_U$, denn $\forall_{x\in U} \,\exists_{0<\epsilon<1}$ mit $\text{B}_{\epsilon} (x) \subseteq U$. $\mathbb{Q}^n$ liegt dicht in $\mathbb{R}^n$, d. h. \[\exists_{\tilde{x}\in\mathbb{Q}^n}\colon ||x-\tilde{x}|| < \frac{\epsilon}{4}<\epsilon\]
+        Daraus folgt $\tilde{x}\in U\cap\mathbb{Q}^n$, d. h. $\tilde{x}=x_k$ für ein geignetes $k\in\mathbb{N}$ und $\text{d}(x_k) > \frac{\epsilon}{2}$, d. h. $x\in Q_{x_k, \, \frac{\text{d}(x_k)}{\sqrt{n}}}$, d. h. $\varphi_i(x)= 1 \forall_{i \geq k}$, d. h. $\varphi_i(x)\xrightarrow[i\to\infty]{}\id_U(x)$\\
+        Andererseits:\\
+        Für $x\in\mathbb{R}^n\setminus U \colon x\notin Q_{x_k, \, \frac{\text{d}(x_k)}{\sqrt{n}}} \forall_{k\in\mathbb{N}}$, d. h.\\ $\varphi_k(x) = 0 \, \forall_{k\in\mathbb{N}}$, d. h. $\varphi_i(x))\xrightarrow[i\to\infty]{}\id_U(x)$
+        \item[Ad b)] $U \coloneqq \mathbb{R}^n \setminus A$ offen. Mit den $\varphi_k$ aus a) definiere $\psi_k \coloneqq \id_{[-k,k]^n}-\varphi_k$.\\
+        Dann gilt: $\forall_{x\in\mathbb{R}^n}\colon \psi_k (x) \xrightarrow[i\to\infty]{}\id_A(x)$
+    \end{itemize}
+\end{proof}

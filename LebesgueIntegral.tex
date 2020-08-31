@@ -104,7 +104,7 @@ Das heißt es genügt zu zeigen: $\forall_{\epsilon > 0} \forall_{k_0 \in \mathb
 Da $\varphi_k \xrightarrow[k \to \infty]{}f , \, \tilde{\varphi_k} \xrightarrow[k \to \infty]{}f$ f. ü. monton, erfüllt $(\psi_n)_n$ die Voraussetzung von obigem Lemma. Also existiert $k_1 \geq k$ mit $\int_D \varphi_{k_1}(x) \text{d}x < \epsilon$\\
 \[\Rightarrow \int_D \varphi_{k_1}(x) \text{d}x \geq \int_D \left(\tilde{\varphi}_{k_0} - \varphi_{k_1}\right)(x)\text{d}x\]
 \[= \int_D \tilde{\varphi}_{k_0}(x)\text{d}x - \int_D \varphi_{k_1}(x)\text{d}x\]
-Damit folgt die Gleichung \ref{eq:Gl1}, \ref{eq:Gl2} wird analog gezeigt.
+Damit folgt die Gleichung \eqref{eq:Gl1}, \eqref{eq:Gl2} wird analog gezeigt.
 
 \subsubsection{Proposition}
 Sei $D \subseteq \mathbb{R}^n$ abgeschlossener Quader oder $D = \mathbb{R}^n$ und seien $f,g \in L^\uparrow(D)$
@@ -123,7 +123,7 @@ Sei $D \subseteq \mathbb{R}^n$ abgeschlossener Quader oder $D = \mathbb{R}^n$ un
 	\item[c)] $\tilde{\varphi}_n = \text{max}(\varphi_n,\psi_n)$ ist eine Treppenfunktion, $\tilde{\varphi}_n \colon D \to \mathbb{R}$ mit $\tilde{\varphi_n} \xrightarrow[n \to \infty]{} \text{min}(f,g)$ f. ü. monoton wachsend mit \[\integ{D}{\tilde{\varphi}_n(x)} \leq \integ{D}{\varphi_n(x)} \leq \integ{D}{f(x)} \in \mathbb{R}\] Da monoton wachsende beschränkte Folgen reeller Zahlen konvergieren, folgt \[\lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \in \mathbb{R} \text{ existiert, d. h. min}(f,g) \in L^\uparrow(D) \text{ mit}\] \[\integ{D}{\text{min}(f,g)(x)} = \lim_{n \to \infty} \integ{D}{\tilde{\varphi}_n(x)} \leq \text{min}\left(\lim_{n \to \infty} \integ{D}{\varphi_n(x)}, \lim_{n \to \infty} \integ{D}{\psi_n(x)}\right)\]
 \end{itemize}
 
-\begin{satz}\leavevmode
+\begin{satz}\leavevmode\label{Intbar:Lebesgue}
 	\begin{itemize}
 		\item[a)] Im Fall $n=1$, $D=[a, b]\ \ (a<b,\, a,b\in\mathbb{R})$ gilt:\\
 		Jede Riemann-Int'bare Funktion $f\colon D\to\mathbb{R}$ liegt in $L^\uparrow(D)$ mit \[\integ{D}{f(x)}=\int_a^bf(x) \text{d}x\]
@@ -134,10 +134,10 @@ Sei $D \subseteq \mathbb{R}^n$ abgeschlossener Quader oder $D = \mathbb{R}^n$ un
 	Zuhause
 \end{proof}
 
-\underline{Beispiele:}\\
+\underline{Beispiele:}
 \begin{enumerate}
 	\item \begin{itemize}
-		\item Dirichlet'sche Sprungfunktion:\\
+		\item Dirichlet'sche Sprungfunktion:
 	\begin{align*}
 		f\colon [0,1] &\to \mathbb{R}\\
 		x&\mapsto \left\{\begin{matrix}
@@ -208,7 +208,7 @@ $\integ{D}{\alpha f_1(x)+\beta f_2(x)}=\alpha\integ{D}{f_1(x)}+\beta\integ{D}{f_
 		\item[c)] Ü 1.9\\
 		Seien $f,\tilde{f}\in L(D)$ mit $f\leq\tilde{f}$ f.ü.\\
 		$\Rightarrow \exists g,h,\tilde{g},\tilde{h}\in L^\uparrow(D)$ mit $g-h=f,\, \tilde{g}-\tilde{h}=\tilde{f}$.\\
-		$\Rightarrow g-h\leq\tilde{g}-\tilde{h}$ f.ü. $\Rightarrow g+\tilde{h} \leq \tilde{g}+h$ f.ü. und $g+\tilde{h},\tilde{g}+h\in L^\uparrow(D)$\\
+		$\Rightarrow g-h\leq\tilde{g}-\tilde{h}$ f.ü. $\Rightarrow g+\tilde{h} \leq \tilde{g}+h$ f.ü. und $g+\tilde{h},\tilde{g}+h\in L^\uparrow(D)$
 		\begin{align*}
 			\Rightarrow \integ{D}{(g(x)+\tilde{h}(x))}&\leq\integ{D}{(\tilde{g}(x)+h(x))}\\
 			\Rightarrow \integ{D}{g(x)}+\integ{D}{\tilde{h}(x)}&\leq\integ{D}{\tilde{g}(x)}+\integ{D}{h(x)}\\
