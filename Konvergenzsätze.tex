@@ -14,7 +14,7 @@ Bedingungen, unter denen aus $f_n\xrightarrow[n\to\infty]{}f$ folgt $\integ{D}{f
     $D\subset\mathbb{R}^n$ abg. Quader oder $D=\mathbb{R}^n$. Ist $f_n\colon D\to\mathbb{R}$ Folge von Funktionen, die f.ü. monoton wachsen. Die Folge der Integrale $\integ{D}{f_n(x)}$ sei beschränkt. Dann konvergiert $(f_n)_n$ f.ü. punktweise gegen ein $f\in L(D)$ mit $\lim_{n\to\infty}\integ{D}{f_n(x)}=\integ{D}{f(x)}$.
 \end{satz}
 \begin{proof}
-    Vorab nach Proposition \ref{integ_rechenregeln} ist $\integ{D}{f_n(x)}$ monoton wachsend, aus der Beschränktheit folgt somit die Konvergenz 
+    Vorab nach Proposition \ref{integ_rechenregeln} ist $\integ{D}{{f_n}(x)}$ monoton wachsend, aus der Beschränktheit folgt somit die Konvergenz 
     \[
         \lim_{n\to\infty}\integ{D}{f_n(x)}\in\mathbb{R}
     \]
@@ -33,15 +33,15 @@ Betrachte für $n\in\mathbb{N}\; f_n:[0,1]\to\mathbb{R};\;x\mapsto\left\{\begin{
 \end{matrix}\right.\\\Rightarrow \forall x\in (0,1]:\;f_n(x)\xrightarrow[n\to\infty]{}f(x)$ und $(f_n(x))_n$ monton wachsend für alle $x\in [0,1]$.\\
 Bemerkung:\\
 Tatsächlich sieht man sofort:
-\[\integ{[0,1]}{f(x)} = \lim_{n\to\infty}\int_{\frac{1}{n}}^1f(x)\,\text{d}x + \lim_{n\to\infty}\int_0^{\frac{1}{n}}(-1)\,\text{d}x = \lim_{n\to\infty}\int_{\frac{1}{n}}^1f(x)\,\text{d}x\]
+$\integ{[0,1]}{f(x)} = \lim_{n\to\infty}\int_{\frac{1}{n}}^1f(x)\,\text{d}x + \lim_{n\to\infty} \int_0^{\frac{1}{n}}(-1)\,\text{d}x = \lim_{n\to\infty} \int_{\frac{1}{n}}^1f(x)\,\text{d}x$
 ist uneigentliches Riemann-Integral $\int_0^1f(x)\,\text{d}x$, dessen Existenz hiermit gezeigt ist.
 
 \begin{korollar}
     Sei $D$ wie zuvor. Sei $f\colon D\to\mathbb{R}$ und $D_1\subseteq D_2\subseteq\cdots\subseteq D$ aufsteigende Folge abg. Quader mit $\bigcup_{m=1}^\infty D_m = D$. Dann gilt:
     \begin{align*}
-        f\in L(D)\iff \forall_{m=1,2,\dots}\colon f_{|D_m}\in L(D)\\
+        f \in L(D) \Leftrightarrow \forall_{m=1,2,\dots} \colon f_{|D_m} \in L(D)\\
         \text{und}\\
         \exists C > 0\colon \forall_{m=1,2,\dots}\colon\integ{{D_m}}{|{f_{|D_m}(x)}|} < C\\
     \end{align*}
-    In diesem Fall gilt: $\lim_{m \to infty}\left(\integ{{D_m}}{{f_{|D_m}}(x)}\right) = \integ{D}{f(x)} \in \mathbb{R}$
+    In diesem Fall gilt: $\lim_{m \to \infty}\left(\integ{{D_m}}{{f_{|D_m}}(x)}\right) = \integ{D}{f(x)} \in \mathbb{R}$
 \end{korollar}

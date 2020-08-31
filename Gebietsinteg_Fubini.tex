@@ -1,0 +1,74 @@
+\subsection{Berechnung von Gebietsintegralen, Satz von Fubini}
+Wir haben bereits gesehen: Lebesgue-Integral $\integ{D}{f(x)}$ für $D \subseteq \mathbb{R}$ Intervall, f. ü. stetig ist mit Methoden aus Ana1/2 berechenbar.\\
+Nun Höherdimensional\\
+\begin{satz}(von Fubini)\\
+    Sei $D \subseteq \mathbb{R}^{n+m}$ abg. Quader oder $D = \mathbb{R}^{n+m}$, d.h. $D = D_1 \times D_2$ mit $D_1 \}\subseteq \mathbb{R}^n, \, D_2 \subseteq \mathbb{R}^m$ abg. Quader oder $D_1 = \mathbb{R}^n, \, D_2 = \mathbb{R}^m.$\\
+    Ist $\underline{f\in L(D)}, f\colon D_1 \times D_2 \to \mathbb{R} \text{ mit } (x,y) \mapsto f(x,y)$ so existiert eine n-dim Nullmenge $N_1 \subset D_1$ derart, dass für $x \in D_1 \setminus N_1$ die Funktion $f(x,\cdot)\colon D_2 \to \mathbb{R} \text{ mit } y \mapsto f(x,y)$ in $L(D_2)$ liegt und weiter $\exists_{g \in L(D_1)}, \, g\colon D_1 \to \mathbb{R} \text{ mit } x \mapsto g(x)$ für die $g(x) = \int_{D_2} f(x,y) \, \text{d}y$ für alle $x\in D_1\setminus N_1$ gilt, derart, dass \[\underbrace{\int_D f(x,y) \,\text{d}(x,y)}_{\text{Lebesgue-Integral von } f\in L(D)} = \integ{{D_1}}{g(x)} = \int_{D_1} \left( \int_{D_2} f(x,y)\, \text{d}y \right) \, \text{d}x \]
+    Analog hat man im gleichen Sinn.
+    \[\int_D f(x,y) \, \text{d}(x,y) = \int_{D_2} \left( \int_{D_1} f(x,y) \, \text{d}x\right) \,\text{d}y\]
+    \underline{Fazit:} Man kann in diesem Fall $f\in L(D)$ das Integral von f komponentenweise verschachtelt ausrechnen.
+\end{satz}
+
+\underline{Beispiel:} $\begin{matrix}
+    f\colon & \overbrace{[0,1]\times [2,5]\times [-1,0]}^D &\to& \mathbb{R}\\
+    & (x_1,x_2x_3)&\mapsto& x_1 e^{\sin (x_2) + x_3^2}
+\end{matrix} \, f \text{ stetig } \Rightarrow f \in L(D)$
+\begin{align*}
+    \int_D x_1 e^{\sin (x_2) + x_3^2} \, \text{d}(x_1, x_2, x_3) &=& \int_{[-1,0]} \left( \int_{[2,5]} \left(\int_{[0,1]} x_1 e^{\sin (x_2) + x_3^2} \, \text{d}x_1 \right) \, \text{d}x_2 \right) \, \text{d}x_3\\
+    &=& \int_{-1}^0 \left(\int_2^5\left(\int_0^1 x_1 e^{\sin (x_2) + x_3^2}\, \text{d}x_1 \right) \, \text{d}x_2 \right) \, \text{d}x_3
+\end{align*}
+
+\begin{proof}
+    Sei $f\in L(D)$. O. E. $f\in L^\uparrow (D)$ (Allg. Fall $f=g-h \text{ mit } g,h\in L^\uparrow (D)$ folgt unmittelbar) d. h. es existiert eine Folge von Treppenfunktionen $\varphi_n\colon D \to \mathbb{R}$ mit $\varphi_n \to f$ f. ü. mon. wachsend mit
+    \begin{align}\label{GW}
+        \int_D f(x,y) \, \text{d}(x,y) = \lim_{n \to \infty} \int_D \varphi_n (x,y) \, \text{d}(x,y)
+    \end{align}
+    Insbesondere existiert eine (m+n)-dim. Nullmenge $N \subseteq D \subseteq \mathbb{R}^{n+m}$ mit $\varphi_n (x,y) \xrightarrow[n \to\infty]{} f(x,y)$ monoton wachsend für alle $(x,y) \in D\setminus N$
+
+    \underline{Hilfssatz:} Ist $N \subseteq D$ (n+m)-dim. Nullmenge, dann ist
+    \[\widetilde{N_1} \coloneqq \{x\in D_1\, | \, \underbrace{\{y\in D_2\, |\, (x,y)\in N\}}_{\subseteq D_2} \text{ \underline{keine} n-dim Nullmenge }\} \subseteq D_1\] eine n-dim Nullmenge. Beweis siehe Arens Lemma S. 918
+
+    D. h.
+    \begin{align}\label{GW2}
+        \forall_{x\in D_1\setminus \widetilde{N_1}} \text{ fest: } \varphi(x,\cdot) \xrightarrow[n\to\infty]{} f(x,\cdot) \text{ f. ü. mon. wachsend}
+    \end{align}
+    (d. h. außerhalb einer n-dim Nullmenge $\subseteq D_2$)
+    
+    Offensichtlich gilt $\int_D \varphi_n (x,y) \text{d}(x,y) = \int_{D_1} \psi_n (x) \text{d}x$ mit der Treppenfunktion
+    \[\varphi_n \colon D_1 \to \mathbb{R}, \, \psi_n (x) \coloneqq \int_{D_2} \varphi_n (x,y) \text{d}y\]
+
+    Die Folge $(\psi_n)_n$ ist monoton wachsend $\forall_{x\in D_1\setminus \widetilde{N_1}}$ (da die $(\varphi_n)_n$ monoton wachsend für alle $(x,y) \in D \setminus N$)
+
+    Wegen der Beschränktheit in Gleichung \eqref{GW} und monotoner Konvergenz existiert
+    \begin{align}\label{GW3}
+        g\in L(D_1) \text{ mit } \psi_n \xrightarrow[n\to\infty]{} g\in L(D_1) \text{ f. ü. mon. wachsend}
+    \end{align}
+    mit (wegen Gleichung \eqref{GW})
+    \[
+        \int_D f(x,y) \, \text{d}(x,y) = \int_{D_1} g(x) \, \text{d}x\\
+        \left(=\lim_{n \to \infty} \int_{D_1} \varphi_n (x) \, \text{d}x = \lim_{n\to\infty} \varphi_n (x,y) \, \text{d}(x,y) = \int_D f(x,y) \, \text{d}(x,y)\right)
+    \]
+    Bleibt z.z.: $g(x) = \int_{D_2} f(x,y) \, \text{d}y$ für fast alle $x\in D_1$. Wegen \eqref{GW3} ist $\underbrace{\int_{D_2} \varphi_n (x,y) \, \text{d}y}_{\psi_n (x)}$ für fast alle $x$ beschränkt und mit $\varphi_n (x,y) \xrightarrow[n\to\infty]{} f(x,y)$ für fast alle $y$ mon. konvergent.
+    \begin{align*}
+        \Rightarrow \lim_{n\to\infty} \int_{D_2} \varphi_n (x,y) \, \text{d}y &= \int_{D_2} f(x,y) \, \text{d}y \text{ für fast alle } x \in D_1\\
+        g(x) = \lim_{n\to\infty} \int_{D_2} \varphi_n (x,y) \, \text{d}y &= \int_{D_2} f(x,y) \, \text{d}y\\
+        \Rightarrow \int_D f(x,y) \, \text{d}(x,y) &= \int_{D_1} g(x) \, \text{d}x\\
+        &= \int_{D_1} \left(\int_{D_2} f(x,y) \, \text{d}y\right) \, \text{d}x
+    \end{align*}
+\end{proof}
+\underline{Fazit:} Man kann Integrale über Quader ausrechnen.\\
+\underline{Achtung:} Der Satz von Fubini sagt nicht, dass eine Funktion $f \colon D \to \mathbb{R}$, wenn $f$ sukzessiv nach $x$ und $y$ integrierbar ist! D. h., wenn z. B. y festgehalten wird, zu sagen, dass $f$ nach $x$ integrierbar ist, reicht nicht aus.\\
+Auch die Vertauschbarkeit der Integration ist dann nicht gesichert. Bsp. siehe Arens S. 925
+\underline{Beispiele}
+\begin{itemize}
+    \item[a)] $f\colon \overbrace{[0,1]\times [-1,2] \times [-2,0]}^{=:D} \to \mathbb{R} \text{ mit } (x,y,z) \mapsto xy^2 z^3 \, f$ ist stetig (da polynom) $\Rightarrow f\in L(D)$\\
+    Fubini \begin{align*}
+        \Rightarrow & \int_D xy^2 z^3 \, \text{d}(x,y,z) &=& \int_{[-2,0]}\left(\int_{[-1,2]}\left(\int_{[0,1]} xy^2 z^3 \, \text{d}x \right)\, \text{d}y\right)\, \text{d}z\\
+        & &=& \int_{-2}^0 \left(\int_{-1}^2 \left(\int_0^1 x y^2 z^3 \, \text{d}x\right)\, \text{d}y\right)\, \text{d}z\\
+        & &=& \int_{-2}^0 \left(\int_1^2 [\frac{1}{2}x^2 y^2 z^3]_{x=0}^{x=1} \, \text{d}y\right)\, \text{d}z\\
+        & &=& \int_{-2}^0 \left(\int_1^2 \frac{1}{2}y^2 z^3 \, \text{d}y\right)\, \text{d}z\\
+        & &=& \int_{-2}^0 [\frac{1}{6} y^3 z^3]_{y=1}^{y=2} \, \text{d}z\\
+        & &=& \int_{-2}^0 \frac{3}{2} z^3 \, \text{d}z = [\frac{3}{8} z^4]_{z=-2}^{z=0} = -\frac{3}{8}(-2)^4 = -6
+    \end{align*} 
+    \item[b)]  
+\end{itemize}
