@@ -117,7 +117,7 @@ Nun wollen wir für $D$ eine allgemeinere Gestalt als abgeschlossene Quader bzw.
 \end{definition}
 \underline{Bemerkung} Die Definition \ref{def:messbar} ist allgemeiner als für $f\in L^{\uparrow}(D),\, D=\mathbb{R}^n$, da $(\varphi_n)_n$ monoton wachsend f. ü. nicht verlangt wird!
 
-\begin{lemma}
+\begin{lemma}\label{Lem:Messbar}
     \begin{itemize}
         \item[a)] Jede offene Teilmenge $U\subseteq\mathbb{R}^n$ ist messbar.
         \item[b)] Jede abgeschlossene Teilmenge $A\subseteq\mathbb{R}^n$ ist messbar. 
@@ -141,3 +141,222 @@ Nun wollen wir für $D$ eine allgemeinere Gestalt als abgeschlossene Quader bzw.
         Dann gilt: $\forall_{x\in\mathbb{R}^n}\colon \psi_k (x) \xrightarrow[i\to\infty]{}\id_A(x)$
     \end{itemize}
 \end{proof}
+
+\underline{Beispiele:}\\
+Alle $d\in L(\mathbb{R}^n)$ sind messbar:
+\begin{itemize}
+    \item $f=g-h$ mit $g,h\in L^\uparrow(\mathbb{R}^n)$, das heißt es existieren Treppenfunktionen $\varphi_k, \psi_k$ mit $\varphi_k \xrightarrow[k\to\infty]{} g, \psi_k \xrightarrow[k\to \infty]{} h$ jeweils fast überall, also $\underbrace{(\varphi_k - \psi_k)}_{\text{Treppenfunktion}} \xrightarrow[k\to \infty]{} f$ fast überall.\\
+    Die Umkehrung gilt nur „fast“, es scheitert daran, dass die Integrale unbeschränkt sein können, zum Beispiel:\\
+    $f\colon \mathbb{R}\to\mathbb{R}, x\mapsto |x|$ ist messbar: \begin{align*}
+        \varphi_k\colon & \mathbb{R} \to \mathbb{R}\\
+        & x \mapsto \left\{\begin{matrix}
+            \frac{1}{k} [k|x|], \, |x| \leq k\\
+            0, \text{ sonst}
+        \end{matrix}\right.
+    \end{align*}
+    also $\varphi_k\to f$. Aber $f\notin L(\mathbb{R})$, da $\int_{-\infty}^{\infty} f(x) \, \text{d}x = \infty$
+\end{itemize}
+
+\begin{definition}
+    Ist $A\subseteq \mathbb{R}^n$ messbar, so heißt \\
+    $\mu (A)\coloneqq \left\{\begin{matrix*}
+        \int_{\mathbb{R}^n} \id_A (x) \, \text{d}x, \text{ falls existent}\\
+        \infty, \text{ sonst}
+    \end{matrix*}\right.$
+    \underline{Lebesgue-Borel-Maß} von $A$.
+
+    \underline{Beachte:} $A\subseteq \mathbb{R}^n$ messbar $\Rightarrow \forall \text{ abg. Quader } D_i \subseteq \mathbb{R}^n\colon \id_{A\cap D_i}\in L(D_i)$, das heißt $\mu (A \cap D_i) < \infty$ (Dazu $(\mu (A \cap D_i))_i$ ist monoton wachsend)\\
+    Falls $D_1 \subseteq D_2 \subseteq D_3 \subseteq \dots$ und $\bigcup_{i=1}^{\infty} D_i = \mathbb{R}^n$, dann (weil monoton konvergent) folgt $\mu (A) = lim_{j\to\infty} \mu (A\cap D_j)$
+\end{definition}
+
+\begin{remark}
+    Normalbereiche im $\mathbb{R}^n$ sind messbar (da abgeschlossen), $\mu (A)$ entspricht dem Flächeninhalt von $A$.
+    \begin{itemize}
+        \item die $\emptyset$ ist messbar mit Treppenfunktion ist die Nullfunktion
+        \item Ü. 14 b) nicht jede Menge besitzt Volumina
+    \end{itemize}
+\end{remark}
+
+\begin{definition}
+    Sei $D\subseteq\mathbb{R}^n$ messbar und $f\colon D\to \mathbb{R}$ eine Funktion, dann def. $f\in L(D)\colon \Leftrightarrow$
+        \begin{itemize}
+            \item[1)]
+            \begin{align*}
+                \hat{f}\colon & \mathbb{R}^n \to \mathbb{R} \text{ ist messbar}\\
+                & x \mapsto \left\{
+                    \begin{matrix*}
+                    f(x), x \in D\\
+                    0, \text{ sonst}
+                    \end{matrix*}\right.
+            \end{align*}
+            \item[2)] $\hat{f} \in L(\mathbb{R}^n)$\\
+            Dann $\integ{D}{f(x)} \coloneqq \integ{{\mathbb{R}^n}}{{\hat{f}(x)}}$ 
+        \end{itemize}
+    Das verallgemeinert die Definition von Lebesgue-Integralen auf beliebige messbare Definitionsbereiche $D\subseteq\mathbb{R}^n$ statt abg. Quader $D\subset\mathbb{R}^n$ oder $D=\mathbb{R}^n$.\\
+    Die Definition ist offenbar verträglich mit der Definition aus 1.2 REFERENZ EINFÜGEN!\\
+    Alle im Abschnitt 1.3 und 1.4 REFERENZ! bewiesenen Aussagen für L(D) gelten analog für diese Verallgemeinerung, insbesondere monotone Konvergenz sowie majorisierte Konvergenz usw.\\
+    Diese Definition ist verträglich mit der Definition $L(D)$ für $D\subseteq\mathbb{R}^1$ abgeschlossener Quader oder $D=\mathbb{R}^1$ und auch mit der Definition $\integ{D}{f(x)}$ für Normalbereiche $D\subseteq\mathbb{R}^2$
+\end{definition}
+
+\begin{satz}
+    Ist $K\subseteq\mathbb{R}^n$ kompakt und $f\colon K\to\mathbb{R}$ stetig, dann $f\in L(K)$.
+\end{satz}
+
+\begin{proof}
+        Zunächst ist $K$ abgeschlossen, also messbar (\ref{Lem:Messbar}). $f$ ist stetig auf Kompaktum, damit ist $f$ beschränkt.\\
+        Übung 11 a) $\Rightarrow$ es reicht zu zeigen: \begin{align*}
+            \hat{f}\colon \mathbb{R}^n\to\mathbb{R}\\
+            x\mapsto\left\{\begin{matrix*}
+                f(x), x\in K\\
+                0, \text{ sonst}
+            \end{matrix*}\right.
+        \end{align*}
+        (denn dann ist 1. erfüllt und weiter: $\hat{f}$ beschränkt. $\Rightarrow \forall \text{ abg. Quader } D\colon f_{|D}\in L(D)$. wähle abg. Quader $D\subseteq\mathbb{R}^n$ mit $K\subseteq D \Rightarrow \hat{f}(x) = 0 \forall_{x\notin D} \Rrightarrow \hat{f}\in L(\mathbb{R}^n))$\\
+        Sei $K\subseteq Q$ mit $Q$ offener Quader, $Q \subseteq \mathbb{R}^n$. Für $k\in\mathbb{N}$ zerlege $Q$ disjunkt in $k^n$ Teilquader $Q_1^{(k)}, Q_2^{(k)}, \dots , Q_{k^n}^{(k)}$ deren Seitenlängen genau $\frac{1}{k} \cdot$ Seitenlängen von Q seien. (Die Randpunkte werden geeignet verteilt)\\
+        Definiere \begin{align*}
+            \tilde{\varphi_k}\colon \mathbb{R}^n\to&\mathbb{R}\\
+            & x\mapsto\left\{\begin{matrix*}
+                \alpha_i^{(k)}, falls x\in Q_i^{(k)} \text{ mit } Q_i^{(k)} \cap K \neq \emptyset\\
+                0, \text{ sonst}
+            \end{matrix*}\right.
+        \end{align*} wobei $\alpha_i^{(k)} = f(x_i^{(k)})$ mit einem für den Quader $Q_i^{(k)}$ fest gewählten $x_i^{(k)} \in Q_i^{(k)} \cap K$\\
+        Die $\tilde{\varphi}_n$ sind Treppenfunktionen und es gilt wegen der Stetigkeit von $f: \tilde{\varphi}_k(x) \xrightarrow[k\to\infty]{} \hat{f}(x) \forall_{x\in\mathbb{R}^n}$
+\end{proof}
+
+\begin{satz}
+    (Cavalieri-Prinzip)\\
+    Ist $A\subseteq\mathbb{R}^{n+1}$ messbar mit $A\subseteq[a,b]\times\mathbb{R}^n$ und $\mu (A) < \infty$, dann gilt:
+    \begin{itemize}
+        \item[1)] Für fast alle $x\in[a,b]$ ist $A_x\coloneqq\{y\in\mathbb{R}^n||\, (x,y)\in A\}\subseteq\mathbb{R}^n$ messbar und $\mu_{\mathbb{R}^n}(A_x) <\infty$
+        \item[2)]$\mu_{\mathbb{R}^{n+1}}(A) = \integ{{[a,b]}}{{\mu_{\mathbb{R}^n}(A_x)}}$
+    \end{itemize}
+    Insebesondere: Gilt $\tilde{A} \subseteq [a,b]\times\mathbb{R}^n$ messbar mit $\mu_{\mathbb{R}^n}(\tilde{A}_x)=\mu_{\mathbb{R}^n}(A_x)$ für fast alle $x\in[a,b]$, dann gilt:
+    \begin{align*}
+        \mu_{\mathbb{R}^{n+1}}(\tilde{A})=\mu_{\mathbb{R}^n}(A)
+    \end{align*}
+\end{satz}
+
+\underline{Beispiele:}\\
+\begin{minipage}{0.333\textwidth}
+    Abbildung Halbkugel
+\end{minipage}
+\begin{minipage}{0.666\textwidth}
+Halbkugel mit Radius r.\\
+Schnitt auf Höhe z: Kreis mir Radius $r_z, r^2 = z^2 +r_z^2$\\
+Fläche $\pi r_z^2 = \pi(r^2-z^2)$
+\end{minipage}
+
+\begin{minipage}{0.333\textwidth}
+    Abbildung Zylinder ohne Kegel
+\end{minipage}
+\begin{minipage}{0.666\textwidth}
+    Schnitt auf Höhe z: Kreisring, Außenradius r, Innenradius z\\
+    Fläche: $\pi r^2 - \pi z^2 = \pi(r^2-z^2)$\\
+    \begin{align*}
+        \Rightarrow \text{Volumen Halbkugel} = &\text{Volumen Restkörper}\\
+        = & \text{ Volumen Zylinder} - \text{Volumen Kegel}\\
+        = & \pi r^2 \cdot r - \frac{1}{3} \pi r^2\cdot r\\
+        = & \frac{2}{3} \pi r^3
+    \end{align*}
+    $\Rightarrow \text{ Volumen Kugel } = \frac{4}{3} \pi r^3$
+\end{minipage}
+\\
+\underline{Außblick:} (Maß- und Integrationstheorie)\\
+Sei $\Omega = \mathbb{R}^n$. Die Menge $\mathscr{A} = \{A \subseteq \mathbb{R}^n | A \text{ messbar}\}$ ist eine $\sigma$-Algebra, das heißt $\emptyset \in \mathscr{A}$ und\\
+$i) A_1, A_2, \dots \in \mathscr{A} \Rightarrow \bigcup_{i=1}^\infty A_i \in \mathscr{A}$\\
+$ii) A\in\mathscr{A} \Rightarrow\Omega\setminus A\in\mathscr{A}$\\
+Für das Borel-Lebesgue-Maß gilt:\\
+$iii) \text{ Sind } A_1, A_2, \dots \in \mathscr{A}$ paarweise disjunkt, dann:
+\begin{align*}
+    \mu \left(\bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty \mu (A_i) \text{ ($\mu$ ist $\sigma$-additiv)}
+\end{align*}
+Mit $\Omega_1 = \mathbb{R}^n, \Omega_2 = \mathbb{R}$ gilt: (mit $\mathscr{A}_1 \coloneqq \mathscr{A}, \mathscr{A}_2 \coloneqq \{A\subseteq\Omega_2| A \text{ messbar}\})$\\
+$iv) f\colon \Omega_1\to\Omega_2$ ist messbar genau dann, wenn
+\begin{align*}
+    \forall A\in\mathscr{A}_2 \colon f^{-1}(A) \in \mathscr{A}_1
+\end{align*}
+$v)$ Eine messbare Funktion $f\colon\Omega\to\mathbb{R}$ ist integrierbar ($\Leftrightarrow f\in L(\Omega_1)$) g.d.w
+\begin{align*}
+    \integ{\Omega}{f(x)} \coloneqq lim_{\epsilon \rightharpoondown 0} \int (f_+, \epsilon) - lim_{\epsilon \rightharpoondown 0} \int (f_-, \epsilon)
+\end{align*} im eigentlichen Sinn existiert.\\
+wobei $f_+ \coloneqq \text{max}(f,0), f_-\coloneqq \text{max}(-f,0)$ und
+\begin{align*}
+    \int (f_+,\epsilon) \coloneqq \sum_{k=0}^\infty k\,\epsilon\,\mu (\{x\in\Omega |\,k\,\epsilon \leq f_{\pm}(x) < (k+1)\epsilon\})
+\end{align*}
+Für $\Omega=\mathbb{R}^n$ gilt dann $\integ{\Omega}{f(x)} = \integ{\mathbb{R}^n}{f(x)}$
+\underline{Allgemein:}\\
+Ein Tripel $(\Omega, \mathscr{A}, \mu)$ mit $\mathscr{A}\subseteq\mathscr{P}(\Omega) \sigma$-Algebra und $\mu\colon \mathscr{A}\to\mathbb{R}_{\geq 0} \cup \{+\infty\} \sigma$-additiv nennt man einen \underline{Maßraum}\\
+Also: $\Omega = \mathbb{R}^n, \mathscr{A}=$ Menge aller messbaren Teilmengen von $\Omega=\mathbb{R}^n, \mu =$ Borell-Lebesgue-Maß bilden einen Maßraum.\\
+Für allg. Maßräume ($\Omega, \mathscr{A},\mu$) sind die messbaren Funktionen durch $iv)$ definiert. Das Lebesgue-integral messbarer Funktionen $f\colon \Omega\to \mathbb{R}$ lässt sich mittels $v)$ definieren.\\
+
+\underline{$L^P$-Räume}\\
+Für $p>0: \mathscr{L}^P(\Omega, \mu)\coloneqq \{f\colon \Omega\to\mathbb{R} |\, |f|^P \in L(\Omega, \mu)\}$. Dass ist ein Vektorraum (o.Beweis)\\
+Definition von Äquivalenzrelation ~ auf $\mathscr{L}^P(\Omega)\colon$ Seien $f,g\in\mathscr{L}^P(\Omega, \mu)$
+\begin{align*}
+    f~g\colon \Leftrightarrow f=g \text{ fast üebrall}
+\end{align*}
+$L^P(\Omega,\mu)\coloneqq$ Menge aller Äquivalenzklassen in $\mathscr{L}^P(\Omega, \mu)$\\
+\underline{Dann:} $L^P(\Omega, \mu)$ ist (mit den kanonischen Verknüpfungen) ein Vektorraum
+\begin{align*}
+    ||f||_p\coloneqq \left(\integ{{\Omega}}{|f(x)|^p}\right)^{\frac{1}{p}} \text{ für } f\in L^P(\Omega,\mu)
+\end{align*}
+ist eine Norm auf $L^P(\Omega, \mu)$ d. h.
+\begin{itemize}
+    \item[i)] $\forall f\in L^P(\Omega,\mu)\colon ||f||_p \geq 0, \text{ mit } = 0 \text{g. d. w.} f= 0$
+    \item[ii)] $\forall f\in L^P(\Omega,\mu), \alpha\in\mathbb{R}\colon ||\alpha f||_p = |\alpha| ||f||_p$
+    \item[iii)] $\forall f,g\in L^P(\Omega,\mu)\colon ||f+g||_p \leq ||f||_p + ||g||_p$
+\end{itemize}
+\begin{satz}
+    von Fischer-Riesz für $p=2$\\
+    $L^2(\mathbb{R}^n)$ ist vollständig\\
+    (d.h. jede Cauchyfolge in $L^2(\mathbb{R}^n)$ konvergiert, d.h. ist $f_1, f_2, f_3, \dots \in  L^2(\mathbb{R}^n)$ Cauchyfolge [d.h. $\forall_{\epsilon > 0} \exists_{N>0}\colon\forall_{n,m\geq N, \text{ mit }n \leq m} \colon ||f_m -f_n||<\epsilon]\\
+    \exists f\in L^2(\mathbb{R}^n)\colon \forall_{\epsilon>0} \exists_{M>0}\colon \forall{n\geq M}\colon ||f_n-f||_p <\epsilon$)
+\end{satz}
+
+\begin{minipage}{0.333\textwidth}
+    Zylinder
+\end{minipage}
+\begin{minipage}{0.666\textwidth}
+    $D\subseteq\mathbb{R}^2, f\colon D\to\mathbb{R} \text{ stetig } (\Rightarrow f \in L(D))$ kompakt\\
+    Volumen unter dem Graphen: = $\boxed{\int_D f(x,y) \, \text{d}(x,y) = \int_{\mathbb{R}^3} \id_{\tilde{D}}(x,y,z)\,\text{d}(x,y,z)}$ mit $\tilde{D}\coloneqq \{(x,y,z)\in\mathbb{R}^3 |\, (x,y)\in D, \,0 \leq z\leq f(x,y)\}\subseteq \mathbb{R}^3$ 
+\end{minipage}
+\\
+Analog für andere $\mathbb{R}^n$, z. B. $n=1$:\\
+$D\subseteq\mathbb{R}$ kompakt, $f\colon D\to\mathbb{R}_{\geq 0}$ stetig, $D=[a,b]$ und $f(x) < C \forall x\in D$\\
+Fläche unter dem Graphen = $\integ{D}{f(x)} = \int_{\mathbb{R}^2} \id_{\tilde{D}}(x,y) \,\text{d}(x,y)$ mit $\tilde{D}\coloneqq\{(x,y)\in \mathbb{R}^2 |\, x\in D, \, 0\leq y\leq f(x)\}$
+\begin{proof}
+    $\tilde{D}$ ist Normalbereich $\Rightarrow$\begin{align*}
+        \int_{\mathbb{R}^2} \id_{\tilde{D}}(x,y)\,\text{d}(x,y) = \int_a^b\left(\int_0^c \id_{\tilde{D}}(x,y)\,\text{d}y\right)\,\text{d}x = \int_a^b f(x) \,\text{d}x = \integ{D}{f(x)}
+    \end{align*}
+\end{proof}
+
+\underline{Beispiele:}\\
+\begin{itemize}
+    \item \begin{minipage}{0.333\textwidth}
+        Abbildung
+    \end{minipage}
+    \begin{minipage}{0.666\textwidth}
+        $D=[0,1]\times[0,1] \subseteq\mathbb{R}^2, f\colon D\to \mathbb{R}, \, x\mapsto 1+x+2y$
+    \end{minipage}
+    Funktion ist stetig $\Rightarrow f\in L(D)$\\
+     \begin{align*}
+         \int_D f(x,y)\,\text{d}(x,y) = \int_0^1\left(\int_0^1 1+x+2y \,\text{d}x\right)\,\text{d}y\\
+         = \int_0^1 \left[x+\frac{1}{2}x^2+2yx\right]_{x=0}^{x=1}\,\text{d}y\\
+         = \int_0^1 1+\frac{1}{2}+2y\,\text{d}y\\
+         = \left[y+\frac{1}{2}y+y^2\right]_{y=0}^{y=1}\\
+         = 1+\frac{1}{2}+1=\frac{5}{2}
+     \end{align*}
+     \item \begin{minipage}{0.333\textwidth}
+         Abbildung Halbkugel
+     \end{minipage}
+     \begin{minipage}{0.666\textwidth}
+         $D=\{(x,y)\in\mathbb{R}^2 | \, x^2 +y^2 \leq r^2\} = \{(x,y)\in\mathbb{R}^2 | \, -r\leq x\leq r, -\sqrt{r^2 - x^2} \leq y\leq \sqrt{r^2 - x^2}\}$
+         \begin{align*}
+         f\colon D&\to\mathbb{R}_{\geq 0}\\
+         (x,y)&\mapsto \sqrt{r^2 -x^2-y^2}\\
+         \int_D f(x,y)\,\text{d}(x,y) &= \int_{-r}^r\left(\int_{-\sqrt{r^2 -x^2}}^{\sqrt{r^2 -x^2}} \sqrt{r^2-x^2-y^2}\,\text{d}y\right)\,\text{d}x\\
+         &\vdots\\
+         &= \frac{2}{3}\pi r^3
+         \end{align*}
+        \end{minipage}
+\end{itemize}
